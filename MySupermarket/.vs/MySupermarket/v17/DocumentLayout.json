@@ -1,0 +1,77 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "D:\\supermarket\\MySupermarket\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{376CC8FA-7B39-403E-9F7D-7FABAF884162}|MySupermarket\\MySupermarket.csproj|d:\\supermarket\\mysupermarket\\mysupermarket\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{376CC8FA-7B39-403E-9F7D-7FABAF884162}|MySupermarket\\MySupermarket.csproj|solutionrelative:mysupermarket\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{376CC8FA-7B39-403E-9F7D-7FABAF884162}|MySupermarket\\MySupermarket.csproj|d:\\supermarket\\mysupermarket\\mysupermarket\\views\\home\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{376CC8FA-7B39-403E-9F7D-7FABAF884162}|MySupermarket\\MySupermarket.csproj|solutionrelative:mysupermarket\\views\\home\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{376CC8FA-7B39-403E-9F7D-7FABAF884162}|MySupermarket\\MySupermarket.csproj|d:\\supermarket\\mysupermarket\\mysupermarket\\views\\shared\\header.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{376CC8FA-7B39-403E-9F7D-7FABAF884162}|MySupermarket\\MySupermarket.csproj|solutionrelative:mysupermarket\\views\\shared\\header.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 3,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{b1e99781-ab81-11d0-b683-00aa00a3ee26}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{e506b91c-c606-466a-90a9-123d1d1e12b3}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Header.cshtml",
+              "DocumentMoniker": "D:\\supermarket\\MySupermarket\\MySupermarket\\Views\\Shared\\Header.cshtml",
+              "RelativeDocumentMoniker": "MySupermarket\\Views\\Shared\\Header.cshtml",
+              "ToolTip": "D:\\supermarket\\MySupermarket\\MySupermarket\\Views\\Shared\\Header.cshtml",
+              "RelativeToolTip": "MySupermarket\\Views\\Shared\\Header.cshtml",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-07-10T16:48:46.4Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "_Layout.cshtml",
+              "DocumentMoniker": "D:\\supermarket\\MySupermarket\\MySupermarket\\Views\\Shared\\_Layout.cshtml",
+              "RelativeDocumentMoniker": "MySupermarket\\Views\\Shared\\_Layout.cshtml",
+              "ToolTip": "D:\\supermarket\\MySupermarket\\MySupermarket\\Views\\Shared\\_Layout.cshtml",
+              "RelativeToolTip": "MySupermarket\\Views\\Shared\\_Layout.cshtml",
+              "ViewState": "AQIAAHYAAAAAAAAAAAAAAJkAAAARAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-07-10T16:25:32.628Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "D:\\supermarket\\MySupermarket\\MySupermarket\\Views\\Home\\Index.cshtml",
+              "RelativeDocumentMoniker": "MySupermarket\\Views\\Home\\Index.cshtml",
+              "ToolTip": "D:\\supermarket\\MySupermarket\\MySupermarket\\Views\\Home\\Index.cshtml",
+              "RelativeToolTip": "MySupermarket\\Views\\Home\\Index.cshtml",
+              "ViewState": "AQIAAAAAAAAAAAAAAADwvwIAAAABAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-07-10T15:50:19.595Z"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
