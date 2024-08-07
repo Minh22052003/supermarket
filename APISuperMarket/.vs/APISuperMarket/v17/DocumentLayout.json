@@ -3,8 +3,8 @@
   "WorkspaceRootPath": "D:\\supermarket\\APISuperMarket\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{0EBE5E5F-443C-4C9B-B72C-88B485568547}|APISuperMarket\\APISuperMarket.csproj|d:\\supermarket\\apisupermarket\\apisupermarket\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{0EBE5E5F-443C-4C9B-B72C-88B485568547}|APISuperMarket\\APISuperMarket.csproj|solutionrelative:apisupermarket\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{0EBE5E5F-443C-4C9B-B72C-88B485568547}|APISuperMarket\\APISuperMarket.csproj|d:\\supermarket\\apisupermarket\\apisupermarket\\controllers\\valuescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0EBE5E5F-443C-4C9B-B72C-88B485568547}|APISuperMarket\\APISuperMarket.csproj|solutionrelative:apisupermarket\\controllers\\valuescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -27,14 +27,14 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "Program.cs",
-              "DocumentMoniker": "D:\\supermarket\\APISuperMarket\\APISuperMarket\\Program.cs",
-              "RelativeDocumentMoniker": "APISuperMarket\\Program.cs",
-              "ToolTip": "D:\\supermarket\\APISuperMarket\\APISuperMarket\\Program.cs",
-              "RelativeToolTip": "APISuperMarket\\Program.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Title": "ValuesController.cs",
+              "DocumentMoniker": "D:\\supermarket\\APISuperMarket\\APISuperMarket\\Controllers\\ValuesController.cs",
+              "RelativeDocumentMoniker": "APISuperMarket\\Controllers\\ValuesController.cs",
+              "ToolTip": "D:\\supermarket\\APISuperMarket\\APISuperMarket\\Controllers\\ValuesController.cs",
+              "RelativeToolTip": "APISuperMarket\\Controllers\\ValuesController.cs",
+              "ViewState": "AQIAAAgAAAAAAAAAAAA4wBMAAAApAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-04T08:53:01.767Z",
+              "WhenOpened": "2024-08-04T12:22:51.382Z",
               "EditorCaption": ""
             }
           ]
