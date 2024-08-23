@@ -13,6 +13,7 @@ namespace APISuperMarket.Models
         public double? TotalPrice { get; set; }
         public DateTime? CreateAt { get; set; }
         public DateTime? UpdateTime { get; set; }
+        public string? ProductName { get; set; }
 
         public virtual Order? Order { get; set; }
         public virtual Product? Product { get; set; }

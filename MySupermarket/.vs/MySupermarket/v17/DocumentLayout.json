@@ -3,12 +3,12 @@
   "WorkspaceRootPath": "D:\\supermarket\\MySupermarket\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{376CC8FA-7B39-403E-9F7D-7FABAF884162}|MySupermarket\\MySupermarket.csproj|d:\\supermarket\\mysupermarket\\mysupermarket\\views\\shared\\footer.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{376CC8FA-7B39-403E-9F7D-7FABAF884162}|MySupermarket\\MySupermarket.csproj|solutionrelative:mysupermarket\\views\\shared\\footer.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{376CC8FA-7B39-403E-9F7D-7FABAF884162}|MySupermarket\\MySupermarket.csproj|d:\\supermarket\\mysupermarket\\mysupermarket\\views\\shared\\header.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{376CC8FA-7B39-403E-9F7D-7FABAF884162}|MySupermarket\\MySupermarket.csproj|solutionrelative:mysupermarket\\views\\shared\\header.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{376CC8FA-7B39-403E-9F7D-7FABAF884162}|MySupermarket\\MySupermarket.csproj|d:\\supermarket\\mysupermarket\\mysupermarket\\views\\shared\\footer.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{376CC8FA-7B39-403E-9F7D-7FABAF884162}|MySupermarket\\MySupermarket.csproj|solutionrelative:mysupermarket\\views\\shared\\footer.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{376CC8FA-7B39-403E-9F7D-7FABAF884162}|MySupermarket\\MySupermarket.csproj|d:\\supermarket\\mysupermarket\\mysupermarket\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
@@ -26,7 +26,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 2,
+          "SelectedChildIndex": 3,
           "Children": [
             {
               "$type": "Bookmark",
@@ -38,7 +38,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 1,
               "Title": "Footer.cshtml",
               "DocumentMoniker": "D:\\supermarket\\MySupermarket\\MySupermarket\\Views\\Shared\\Footer.cshtml",
               "RelativeDocumentMoniker": "MySupermarket\\Views\\Shared\\Footer.cshtml",
@@ -51,13 +51,13 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 0,
               "Title": "Header.cshtml",
               "DocumentMoniker": "D:\\supermarket\\MySupermarket\\MySupermarket\\Views\\Shared\\Header.cshtml",
               "RelativeDocumentMoniker": "MySupermarket\\Views\\Shared\\Header.cshtml",
               "ToolTip": "D:\\supermarket\\MySupermarket\\MySupermarket\\Views\\Shared\\Header.cshtml",
               "RelativeToolTip": "MySupermarket\\Views\\Shared\\Header.cshtml",
-              "ViewState": "AQIAAAYAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "ViewState": "AQIAADYAAAAAAAAAAAAAAAAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
               "WhenOpened": "2024-07-10T16:48:46.4Z",
               "EditorCaption": ""
@@ -72,8 +72,7 @@
               "RelativeToolTip": "MySupermarket\\Views\\Shared\\_Layout.cshtml",
               "ViewState": "AQIAAIgAAAAAAAAAAAAAAJkAAAARAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-07-10T16:25:32.628Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-07-10T16:25:32.628Z"
             },
             {
               "$type": "Document",
