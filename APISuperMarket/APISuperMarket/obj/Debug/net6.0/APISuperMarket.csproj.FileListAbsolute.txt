@@ -67,3 +67,5 @@ D:\supermarket\APISuperMarket\APISuperMarket\obj\Debug\net6.0\refint\APISuperMar
 D:\supermarket\APISuperMarket\APISuperMarket\obj\Debug\net6.0\APISuperMarket.pdb
 D:\supermarket\APISuperMarket\APISuperMarket\obj\Debug\net6.0\APISuperMarket.genruntimeconfig.cache
 D:\supermarket\APISuperMarket\APISuperMarket\obj\Debug\net6.0\ref\APISuperMarket.dll
+D:\supermarket\APISuperMarket\APISuperMarket\bin\Debug\net6.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
+D:\supermarket\APISuperMarket\APISuperMarket\bin\Debug\net6.0\Microsoft.IdentityModel.Abstractions.dll
