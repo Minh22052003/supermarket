@@ -1,6 +1,5 @@
 ﻿using APISuperMarket.Data;
 using APISuperMarket.DTOs;
-using APISuperMarket.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -46,7 +45,8 @@ namespace APISuperMarket.Controllers
                 var claims = new List<Claim>
                 {
                     new Claim(JwtRegisteredClaimNames.Sub, user.User_Name),
-                    new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString())
+                    new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString()),
+                    new Claim("UserId", account.ToString())
                 };
 
                 claims.AddRange(roles.Select(role => new Claim(ClaimTypes.Role, role)));

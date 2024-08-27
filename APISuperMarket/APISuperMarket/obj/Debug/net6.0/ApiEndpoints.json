@@ -16,9 +16,9 @@
     "ReturnTypes": []
   },
   {
-    "ContainingType": "APISuperMarket.Controllers.ValuesController",
-    "Method": "GetAll",
-    "RelativePath": "api/Values",
+    "ContainingType": "APISuperMarket.Controllers.UserController",
+    "Method": "GetProfileAsync",
+    "RelativePath": "api/User/profile",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,

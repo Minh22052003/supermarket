@@ -24,7 +24,7 @@ namespace APISuperMarket.Models
         public int CustomerId { get; set; }
         public string? CustomerName { get; set; }
         public int? MailId { get; set; }
-        public byte[] BirthDay { get; set; } = null!;
+        public DateTime? BirthDay { get; set; }
         public int? GenderId { get; set; }
         public int? ProfileImageId { get; set; }
 

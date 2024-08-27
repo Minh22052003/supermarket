@@ -55,7 +55,7 @@ namespace APISuperMarket.Data
         {
             if (!optionsBuilder.IsConfigured)
             {
-//#warning    To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see http://go.microsoft.com/fwlink/?LinkId=723263.
+#warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see http://go.microsoft.com/fwlink/?LinkId=723263.
                 optionsBuilder.UseSqlServer("Data Source=DESKTOP-SB1QUSQ\\SQLEXPRESS;Initial Catalog=DataSuperMart;Integrated Security=True;Multiple Active Result Sets=True;Trust Server Certificate=True");
             }
         }
@@ -327,9 +327,7 @@ namespace APISuperMarket.Data
 
                 entity.Property(e => e.CustomerId).HasColumnName("CustomerID");
 
-                entity.Property(e => e.BirthDay)
-                    .IsRowVersion()
-                    .IsConcurrencyToken();
+                entity.Property(e => e.BirthDay).HasColumnType("datetime");
 
                 entity.Property(e => e.CustomerName)
                     .HasMaxLength(50)
@@ -479,7 +477,7 @@ namespace APISuperMarket.Data
                 entity.Property(e => e.MailId).HasColumnName("MailID");
 
                 entity.Property(e => e.EmailAddress)
-                    .HasMaxLength(20)
+                    .HasMaxLength(250)
                     .IsUnicode(false)
                     .HasColumnName("Email_Address");
             });
@@ -576,6 +574,11 @@ namespace APISuperMarket.Data
                 entity.Property(e => e.OrderId).HasColumnName("OrderID");
 
                 entity.Property(e => e.ProductId).HasColumnName("ProductID");
+
+                entity.Property(e => e.ProductName)
+                    .HasMaxLength(250)
+                    .IsUnicode(false)
+                    .HasColumnName("Product_Name");
 
                 entity.Property(e => e.TotalPrice).HasColumnName("Total_Price");
 
@@ -780,7 +783,7 @@ namespace APISuperMarket.Data
                 entity.Property(e => e.ProfileImageId).HasColumnName("Profile_ImageID");
 
                 entity.Property(e => e.ImageUrl)
-                    .HasMaxLength(50)
+                    .HasMaxLength(250)
                     .IsUnicode(false)
                     .HasColumnName("Image_URL");
             });
