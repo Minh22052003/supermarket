@@ -1,9 +1,13 @@
 ﻿using APISuperMarket.Data;
 using APISuperMarket.DTOs;
+using APISuperMarket.Models;
+using Google.Apis.Auth;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
+using Newtonsoft.Json.Linq;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
@@ -33,7 +37,7 @@ namespace APISuperMarket.Controllers
 
             if (account == 0)
             {
-                return NotFound("User not found or password is incorrect.");
+                return NotFound("Không tìm thấy tài khoản người dùng.");
             }
 
             if (account != null)
@@ -61,13 +65,83 @@ namespace APISuperMarket.Controllers
                     expires: DateTime.Now.AddMinutes(30),
                     signingCredentials: creds);
 
-                return Ok(new
+
+                var jwtToken = new JwtSecurityTokenHandler().WriteToken(token);
+
+                // Tạo cookie chứa JWT
+                var cookieOptions = new CookieOptions
                 {
-                    token = new JwtSecurityTokenHandler().WriteToken(token)
-                });
+                    HttpOnly = true,
+                    Secure = true,
+                    SameSite = SameSiteMode.Strict,
+                    Expires = DateTime.Now.AddMinutes(30)
+                };
+
+                Response.Cookies.Append("AuthToken", jwtToken, cookieOptions);
+                return Ok("Đăng nhập thành công");
             }
 
             return Unauthorized();
         }
+
+        [HttpPost("register")]
+        public async Task<IActionResult> RegisterAsync(RegisterRequest registerRequest)
+        {
+
+            if (registerRequest.IsGoogleRegistrantion == false)
+            {
+                var accuser = _context.AccCustomers.FirstOrDefault(a => a.UserName == registerRequest.UserName);
+                if (accuser != null)
+                {
+                    return NotFound("Tài khoản đã tồn tại trong hệ thống");
+                }
+                var newUser = new AccCustomer
+                {
+                    UserName = registerRequest.UserName,
+                    HashPass = registerRequest.Password,
+                    AuthProvider = null,
+                    DateCreation = DateTime.UtcNow,
+                    StatusAccId = 7
+                };
+                _context.AccCustomers.Add(newUser);
+                await _context.SaveChangesAsync();
+                return Ok("Đăng kí tài khoản thành công");
+                
+            }
+            else
+            {
+                var payload = await GoogleJsonWebSignature.ValidateAsync(registerRequest.GoogleRegistrantToken);
+
+                if (payload != null)
+                {
+                    var googleUserId = payload.Subject;
+
+                    var accUser = _context.AccCustomers.FirstOrDefault(a => a.ProviderId == googleUserId);
+                    if (accUser != null)
+                    {
+                        return NotFound("Tài khoản đã được đăng kí trước đó");
+                    }
+
+                    var newAccCustomer = new AccCustomer
+                    {
+                        ProviderId = googleUserId,
+                        AuthProvider = "Google",
+                        DateCreation = DateTime.UtcNow,
+                        StatusAccId = 1
+                    };
+
+                    _context.AccCustomers.Add(newAccCustomer);
+                    await _context.SaveChangesAsync();
+
+                    return Ok("Đăng kí tài khoản thành công");
+                }
+                else
+                {
+                    return BadRequest("Đăng kí bằng Google không thành công");
+                }
+            }
+        }
+
+
     }
 }

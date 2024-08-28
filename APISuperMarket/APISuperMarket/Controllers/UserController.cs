@@ -17,14 +17,14 @@ namespace APISuperMarket.Controllers
         {
             _context = context;
         }
-        [Authorize(Roles = "Manager")]
+        [Authorize(Roles = "User")]
         [HttpGet("profile")]
-        public async Task<IActionResult> GetProfileAsync()
+        public IActionResult GetProfileAsync()
         {
             var customerId = User.FindFirst("UserId")?.Value;
             if (customerId == null)
             {
-                return NotFound("User not found.");
+                return NotFound("Không tìm thấy người dùng.");
             }
             var customer = (from c in _context.Customers
                             where c.CustomerId == Convert.ToInt32(customerId)
@@ -40,6 +40,11 @@ namespace APISuperMarket.Controllers
                                 p.ImageUrl
                             }).FirstOrDefault();
             return Ok(customer);
+        }
+        [HttpPost("editprofile")]
+        public IActionResult Editprofie([FromBody] )
+        {
+            var customerId = User.FindFirst("UserId")?.Value;
         }
     }
 }
