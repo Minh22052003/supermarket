@@ -33,6 +33,22 @@
   },
   {
     "ContainingType": "APISuperMarket.Controllers.UserController",
+    "Method": "Editprofie",
+    "RelativePath": "api/User/editprofile",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "profileUserDTO",
+        "Type": "APISuperMarket.DTOs.ProfileUserDTO",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "APISuperMarket.Controllers.UserController",
     "Method": "GetProfileAsync",
     "RelativePath": "api/User/profile",
     "HttpMethod": "GET",

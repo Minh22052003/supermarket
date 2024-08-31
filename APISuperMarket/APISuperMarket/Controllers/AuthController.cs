@@ -87,7 +87,7 @@ namespace APISuperMarket.Controllers
         [HttpPost("register")]
         public async Task<IActionResult> RegisterAsync(RegisterRequest registerRequest)
         {
-
+            List<string> listgmail = _context.Mail.Select(a => a.EmailAddress).ToList();
             if (registerRequest.IsGoogleRegistrantion == false)
             {
                 var accuser = _context.AccCustomers.FirstOrDefault(a => a.UserName == registerRequest.UserName);
@@ -95,16 +95,44 @@ namespace APISuperMarket.Controllers
                 {
                     return NotFound("Tài khoản đã tồn tại trong hệ thống");
                 }
-                var newUser = new AccCustomer
+                foreach (var gmail in listgmail)
                 {
+                    if (gmail == registerRequest.Gmail)
+                    {
+                        return NotFound("Gmail đã tồn tại trong hệ thống");
+                    }
+                }
+                var newMail = new Mail
+                {
+                    EmailAddress = registerRequest.Gmail
+                };
+                _context.Mail.Add(newMail);
+                await _context.SaveChangesAsync();
+                var newUser = new Customer
+                {
+                    MailId = newMail.MailId,
+                };
+                _context.Customers.Add(newUser);
+                await _context.SaveChangesAsync();
+                var newAccUser = new AccCustomer
+                {
+                    CustomerId = newUser.CustomerId, 
                     UserName = registerRequest.UserName,
                     HashPass = registerRequest.Password,
                     AuthProvider = null,
                     DateCreation = DateTime.UtcNow,
                     StatusAccId = 7
                 };
-                _context.AccCustomers.Add(newUser);
+                _context.AccCustomers.Add(newAccUser);
                 await _context.SaveChangesAsync();
+                var customerRole = new CustomerRole
+                {
+                    CustomerId = newUser.CustomerId,
+                    RoleId = 2
+                };
+                _context.CustomerRoles.Add(customerRole);
+                await _context.SaveChangesAsync();
+
                 return Ok("Đăng kí tài khoản thành công");
                 
             }
@@ -121,9 +149,28 @@ namespace APISuperMarket.Controllers
                     {
                         return NotFound("Tài khoản đã được đăng kí trước đó");
                     }
-
+                    foreach (var gmail in listgmail)
+                    {
+                        if (gmail == registerRequest.Gmail)
+                        {
+                            return NotFound("Gmail đã tồn tại trong hệ thống");
+                        }
+                    }
+                    var newMail = new Mail
+                    {
+                        EmailAddress = registerRequest.Gmail
+                    };
+                    _context.Mail.Add(newMail);
+                    await _context.SaveChangesAsync();
+                    var newUser = new Customer
+                    {
+                        MailId = newMail.MailId,
+                    };
+                    _context.Customers.Add(newUser);
+                    await _context.SaveChangesAsync();
                     var newAccCustomer = new AccCustomer
                     {
+                        CustomerId = newUser.CustomerId,
                         ProviderId = googleUserId,
                         AuthProvider = "Google",
                         DateCreation = DateTime.UtcNow,
@@ -131,6 +178,14 @@ namespace APISuperMarket.Controllers
                     };
 
                     _context.AccCustomers.Add(newAccCustomer);
+                    await _context.SaveChangesAsync();
+
+                    var customerRole = new CustomerRole
+                    {
+                        CustomerId = newUser.CustomerId,
+                        RoleId = 2
+                    };
+                    _context.CustomerRoles.Add(customerRole);
                     await _context.SaveChangesAsync();
 
                     return Ok("Đăng kí tài khoản thành công");

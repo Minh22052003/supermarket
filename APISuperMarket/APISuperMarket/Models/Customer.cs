@@ -11,6 +11,7 @@ namespace APISuperMarket.Models
             BankAccounts = new HashSet<BankAccount>();
             BrandChanges = new HashSet<BrandChange>();
             Carts = new HashSet<Cart>();
+            CustomerRoles = new HashSet<CustomerRole>();
             DiscountChanges = new HashSet<DiscountChange>();
             OrderChanges = new HashSet<OrderChange>();
             Orders = new HashSet<Order>();
@@ -35,6 +36,7 @@ namespace APISuperMarket.Models
         public virtual ICollection<BankAccount> BankAccounts { get; set; }
         public virtual ICollection<BrandChange> BrandChanges { get; set; }
         public virtual ICollection<Cart> Carts { get; set; }
+        public virtual ICollection<CustomerRole> CustomerRoles { get; set; }
         public virtual ICollection<DiscountChange> DiscountChanges { get; set; }
         public virtual ICollection<OrderChange> OrderChanges { get; set; }
         public virtual ICollection<Order> Orders { get; set; }

@@ -358,21 +358,21 @@ namespace APISuperMarket.Data
 
             modelBuilder.Entity<CustomerRole>(entity =>
             {
-                entity.HasNoKey();
-
                 entity.ToTable("Customer_Roles");
+
+                entity.Property(e => e.CustomerRoleId).HasColumnName("Customer_RoleID");
 
                 entity.Property(e => e.CustomerId).HasColumnName("CustomerID");
 
                 entity.Property(e => e.RoleId).HasColumnName("RoleID");
 
                 entity.HasOne(d => d.Customer)
-                    .WithMany()
+                    .WithMany(p => p.CustomerRoles)
                     .HasForeignKey(d => d.CustomerId)
                     .HasConstraintName("FK__Customer___Custo__3E1D39E1");
 
                 entity.HasOne(d => d.Role)
-                    .WithMany()
+                    .WithMany(p => p.CustomerRoles)
                     .HasForeignKey(d => d.RoleId)
                     .HasConstraintName("FK__Customer___RoleI__3D2915A8");
             });
