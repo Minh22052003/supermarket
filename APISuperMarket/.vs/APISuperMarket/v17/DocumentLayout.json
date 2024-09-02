@@ -54,7 +54,12 @@
               "RelativeToolTip": "APISuperMarket\\Data\\DataSuperMartContext.cs",
               "ViewState": "AQIAANEDAAAAAAAAAAAYwOIDAAABAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+<<<<<<< HEAD
               "WhenOpened": "2024-08-31T09:32:54.325Z"
+=======
+              "WhenOpened": "2024-08-31T09:32:54.325Z",
+              "EditorCaption": ""
+>>>>>>> 6e4c033a11547cdc2081f655ac5dd505266eb48f
             },
             {
               "$type": "Document",
@@ -66,7 +71,12 @@
               "RelativeToolTip": "APISuperMarket\\Models\\CustomerRole.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+<<<<<<< HEAD
               "WhenOpened": "2024-08-31T09:24:32.595Z"
+=======
+              "WhenOpened": "2024-08-31T09:24:32.595Z",
+              "EditorCaption": ""
+>>>>>>> 6e4c033a11547cdc2081f655ac5dd505266eb48f
             },
             {
               "$type": "Document",
@@ -78,7 +88,12 @@
               "RelativeToolTip": "APISuperMarket\\Controllers\\AuthController.cs",
               "ViewState": "AQIAAAsAAAAAAAAAAAAjwBUAAAAZAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+<<<<<<< HEAD
               "WhenOpened": "2024-08-31T07:09:22.952Z"
+=======
+              "WhenOpened": "2024-08-31T07:09:22.952Z",
+              "EditorCaption": ""
+>>>>>>> 6e4c033a11547cdc2081f655ac5dd505266eb48f
             },
             {
               "$type": "Document",
@@ -90,7 +105,12 @@
               "RelativeToolTip": "APISuperMarket\\DTOs\\ProfileUserDTO.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAQAAAAxAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+<<<<<<< HEAD
               "WhenOpened": "2024-08-31T07:06:31.767Z"
+=======
+              "WhenOpened": "2024-08-31T07:06:31.767Z",
+              "EditorCaption": ""
+>>>>>>> 6e4c033a11547cdc2081f655ac5dd505266eb48f
             },
             {
               "$type": "Document",
@@ -102,7 +122,12 @@
               "RelativeToolTip": "APISuperMarket\\DTOs\\RegisterRequest.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAgAAAArAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+<<<<<<< HEAD
               "WhenOpened": "2024-08-31T03:12:54.566Z"
+=======
+              "WhenOpened": "2024-08-31T03:12:54.566Z",
+              "EditorCaption": ""
+>>>>>>> 6e4c033a11547cdc2081f655ac5dd505266eb48f
             },
             {
               "$type": "Document",
@@ -112,7 +137,11 @@
               "RelativeDocumentMoniker": "APISuperMarket\\Controllers\\UserController.cs",
               "ToolTip": "D:\\supermarket\\APISuperMarket\\APISuperMarket\\Controllers\\UserController.cs",
               "RelativeToolTip": "APISuperMarket\\Controllers\\UserController.cs",
+<<<<<<< HEAD
               "ViewState": "AQIAAA0AAAAAAAAAAAAuwBwAAAANAAAA",
+=======
+              "ViewState": "AQIAABkAAAAAAAAAAAAYwBwAAAANAAAA",
+>>>>>>> 6e4c033a11547cdc2081f655ac5dd505266eb48f
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-08-27T03:52:25.525Z",
               "EditorCaption": ""
