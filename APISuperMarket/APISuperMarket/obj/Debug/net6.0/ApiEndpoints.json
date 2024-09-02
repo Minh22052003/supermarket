@@ -32,6 +32,48 @@
     "ReturnTypes": []
   },
   {
+    "ContainingType": "APISuperMarket.Controllers.ProductController",
+    "Method": "AddProduct",
+    "RelativePath": "api/Product/addproduct",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "product",
+        "Type": "APISuperMarket.Models.Product",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "APISuperMarket.Controllers.ProductController",
+    "Method": "GetProduct",
+    "RelativePath": "api/Product/product/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "APISuperMarket.Controllers.ProductController",
+    "Method": "GetProducts",
+    "RelativePath": "api/Product/products",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "APISuperMarket.Controllers.UserController",
     "Method": "UploadProfileImageAsync",
     "RelativePath": "api/User/editimageprofile",

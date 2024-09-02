@@ -659,21 +659,21 @@ namespace APISuperMarket.Data
 
             modelBuilder.Entity<ProductCategory>(entity =>
             {
-                entity.HasNoKey();
-
                 entity.ToTable("Product_Category");
+
+                entity.Property(e => e.ProductCategoryId).HasColumnName("Product_CategoryID");
 
                 entity.Property(e => e.CategoryId).HasColumnName("CategoryID");
 
                 entity.Property(e => e.ProductId).HasColumnName("ProductID");
 
                 entity.HasOne(d => d.Category)
-                    .WithMany()
+                    .WithMany(p => p.ProductCategories)
                     .HasForeignKey(d => d.CategoryId)
                     .HasConstraintName("FK__Product_C__Categ__32AB8735");
 
                 entity.HasOne(d => d.Product)
-                    .WithMany()
+                    .WithMany(p => p.ProductCategories)
                     .HasForeignKey(d => d.ProductId)
                     .HasConstraintName("FK__Product_C__Produ__31B762FC");
             });
