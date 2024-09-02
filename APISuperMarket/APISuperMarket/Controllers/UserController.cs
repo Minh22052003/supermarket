@@ -1,11 +1,7 @@
 ﻿using APISuperMarket.Data;
 using APISuperMarket.DTOs;
-using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Http;
+using APISuperMarket.Models;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
-using System.IdentityModel.Tokens.Jwt;
-using System.Security.Claims;
 
 namespace APISuperMarket.Controllers
 {
@@ -14,11 +10,13 @@ namespace APISuperMarket.Controllers
     public class UserController : ControllerBase
     {
         private readonly DataSuperMartContext _context;
-        public UserController(DataSuperMartContext context)
+        private readonly GoogleDriveService _googleDriveService;
+        public UserController(DataSuperMartContext context, GoogleDriveService googleDriveService)
         {
             _context = context;
+            _googleDriveService = googleDriveService;
+
         }
-        [Authorize(Roles = "User")]
         [HttpGet("profile")]
         public IActionResult GetProfileAsync()
         {
@@ -82,5 +80,53 @@ namespace APISuperMarket.Controllers
                 return BadRequest(ex.Message);
             }
         }
+        [HttpPut("editimageprofile")]
+        public async Task<IActionResult> UploadProfileImageAsync(IFormFile file)
+        {
+            try
+            {
+                var customerId = User.FindFirst("UserId")?.Value;
+                if (customerId == null)
+                {
+                    return NotFound("Không tìm thấy người dùng.");
+                }
+                var customer = _context.Customers.Find(Convert.ToInt32(customerId));
+                if (customer == null)
+                {
+                    return NotFound("Không tìm thấy người dùng.");
+                }
+                var profileImage = _context.ProfileImages.FirstOrDefault(p => p.ImageUrl == file.FileName);
+                if (profileImage != null)
+                {
+                    return BadRequest("Hình ảnh đã tồn tại.");
+                }
+                // Lưu file tạm thời lên server để upload lên Google Drive
+                var tempFilePath = Path.GetTempFileName();
+                using (var stream = new FileStream(tempFilePath, FileMode.Create))
+                {
+                    await file.CopyToAsync(stream);
+                }
+
+                // Upload file lên Google Drive
+                var fileId = await _googleDriveService.UploadFileAsync(tempFilePath);
+                var link = _googleDriveService.GetFileLink(fileId);
+
+
+                var newProfileImage = new ProfileImage
+                {
+                    ImageUrl = link
+                };
+                _context.ProfileImages.Add(newProfileImage);
+                _context.SaveChanges();
+                customer.ProfileImageId = newProfileImage.ProfileImageId;
+                _context.SaveChanges();
+                return Ok("Cập nhật ảnh thành công");
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
+
     }
 }

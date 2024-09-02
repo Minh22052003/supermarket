@@ -1,12 +1,13 @@
 {
   "version": 2,
-  "dgSpecHash": "dfddTC8Z8LQXuuB4HADzP1YPawZuyF44cEzVS0SN6IJjfugN4fWGaZb6F6Ido9xozXvhBpY4T9FFLG68jn+tiQ==",
+  "dgSpecHash": "TNI1LkTyaDIRtorhC5WsiWm9jG4sn3QyaZxIti3G6I1cROKpDwwc0ovdhqbuVPV7T+8Sxf6plPHNSCAkAn7qIw==",
   "success": true,
   "projectFilePath": "D:\\supermarket\\APISuperMarket\\APISuperMarket\\APISuperMarket.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\alanp\\.nuget\\packages\\google.apis\\1.68.0\\google.apis.1.68.0.nupkg.sha512",
     "C:\\Users\\alanp\\.nuget\\packages\\google.apis.auth\\1.68.0\\google.apis.auth.1.68.0.nupkg.sha512",
     "C:\\Users\\alanp\\.nuget\\packages\\google.apis.core\\1.68.0\\google.apis.core.1.68.0.nupkg.sha512",
+    "C:\\Users\\alanp\\.nuget\\packages\\google.apis.drive.v3\\1.68.0.3508\\google.apis.drive.v3.1.68.0.3508.nupkg.sha512",
     "C:\\Users\\alanp\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",
     "C:\\Users\\alanp\\.nuget\\packages\\microsoft.aspnetcore.authentication.jwtbearer\\6.0.33\\microsoft.aspnetcore.authentication.jwtbearer.6.0.33.nupkg.sha512",
     "C:\\Users\\alanp\\.nuget\\packages\\microsoft.csharp\\4.5.0\\microsoft.csharp.4.5.0.nupkg.sha512",
