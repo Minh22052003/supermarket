@@ -195,19 +195,12 @@ namespace APISuperMarket.Data
 
                 entity.Property(e => e.BrandId).HasColumnName("BrandID");
 
-                entity.Property(e => e.BrandName)
-                    .HasMaxLength(50)
-                    .IsUnicode(false)
-                    .HasColumnName("Brand_Name");
+                entity.Property(e => e.BrandName).HasColumnName("Brand_Name");
 
                 entity.Property(e => e.CreateAt)
                     .HasColumnType("datetime")
                     .HasColumnName("Create_At")
                     .HasDefaultValueSql("(getdate())");
-
-                entity.Property(e => e.Description)
-                    .HasMaxLength(500)
-                    .IsUnicode(false);
 
                 entity.Property(e => e.LogoBrandUrl)
                     .HasMaxLength(100)
@@ -303,10 +296,7 @@ namespace APISuperMarket.Data
 
                 entity.Property(e => e.CategoryId).HasColumnName("CategoryID");
 
-                entity.Property(e => e.CategoryName)
-                    .HasMaxLength(250)
-                    .IsUnicode(false)
-                    .HasColumnName("Category_Name");
+                entity.Property(e => e.CategoryName).HasColumnName("Category_Name");
             });
 
             modelBuilder.Entity<ChangeType>(entity =>
@@ -634,10 +624,6 @@ namespace APISuperMarket.Data
 
                 entity.Property(e => e.BrandId).HasColumnName("BrandID");
 
-                entity.Property(e => e.Description)
-                    .HasMaxLength(250)
-                    .IsUnicode(false);
-
                 entity.Property(e => e.Expiry)
                     .HasColumnType("datetime")
                     .HasDefaultValueSql("(getdate())");
@@ -646,10 +632,7 @@ namespace APISuperMarket.Data
                     .HasColumnType("decimal(10, 2)")
                     .HasColumnName("Inventory_Quantity");
 
-                entity.Property(e => e.ProductName)
-                    .HasMaxLength(250)
-                    .IsUnicode(false)
-                    .HasColumnName("Product_Name");
+                entity.Property(e => e.ProductName).HasColumnName("Product_Name");
 
                 entity.HasOne(d => d.Brand)
                     .WithMany(p => p.Products)

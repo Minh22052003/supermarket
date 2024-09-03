@@ -33,6 +33,22 @@
   },
   {
     "ContainingType": "APISuperMarket.Controllers.ProductController",
+    "Method": "AddBrand",
+    "RelativePath": "api/Product/addbrand",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "brand",
+        "Type": "APISuperMarket.DTOs.BrandDTO",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "APISuperMarket.Controllers.ProductController",
     "Method": "AddProduct",
     "RelativePath": "api/Product/addproduct",
     "HttpMethod": "POST",
@@ -41,7 +57,7 @@
     "Parameters": [
       {
         "Name": "product",
-        "Type": "APISuperMarket.Models.Product",
+        "Type": "APISuperMarket.DTOs.ProductDTO",
         "IsRequired": true
       }
     ],
