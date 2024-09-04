@@ -9,5 +9,6 @@
         public string? Description { get; set; }
         public DateTime Expiry { get; set; }
         public int InventoryQuantity { get; set; }
+        public List<IFormFile> ImageProduct { get; set; }
     }
 }

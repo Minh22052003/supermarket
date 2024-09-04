@@ -3,28 +3,32 @@
   "WorkspaceRootPath": "D:\\supermarket\\APISuperMarket\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{0EBE5E5F-443C-4C9B-B72C-88B485568547}|APISuperMarket\\APISuperMarket.csproj|d:\\supermarket\\apisupermarket\\apisupermarket\\data\\datasupermartcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{0EBE5E5F-443C-4C9B-B72C-88B485568547}|APISuperMarket\\APISuperMarket.csproj|solutionrelative:apisupermarket\\data\\datasupermartcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{0EBE5E5F-443C-4C9B-B72C-88B485568547}|APISuperMarket\\APISuperMarket.csproj|d:\\supermarket\\apisupermarket\\apisupermarket\\controllers\\productcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{0EBE5E5F-443C-4C9B-B72C-88B485568547}|APISuperMarket\\APISuperMarket.csproj|solutionrelative:apisupermarket\\controllers\\productcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{0EBE5E5F-443C-4C9B-B72C-88B485568547}|APISuperMarket\\APISuperMarket.csproj|d:\\supermarket\\apisupermarket\\apisupermarket\\dtos\\branddto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{0EBE5E5F-443C-4C9B-B72C-88B485568547}|APISuperMarket\\APISuperMarket.csproj|solutionrelative:apisupermarket\\dtos\\branddto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{0EBE5E5F-443C-4C9B-B72C-88B485568547}|APISuperMarket\\APISuperMarket.csproj|d:\\supermarket\\apisupermarket\\apisupermarket\\data\\googledriveservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0EBE5E5F-443C-4C9B-B72C-88B485568547}|APISuperMarket\\APISuperMarket.csproj|solutionrelative:apisupermarket\\data\\googledriveservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{0EBE5E5F-443C-4C9B-B72C-88B485568547}|APISuperMarket\\APISuperMarket.csproj|d:\\supermarket\\apisupermarket\\apisupermarket\\dtos\\productdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{0EBE5E5F-443C-4C9B-B72C-88B485568547}|APISuperMarket\\APISuperMarket.csproj|solutionrelative:apisupermarket\\dtos\\productdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
+      "AbsoluteMoniker": "D:0:0:{0EBE5E5F-443C-4C9B-B72C-88B485568547}|APISuperMarket\\APISuperMarket.csproj|d:\\supermarket\\apisupermarket\\apisupermarket\\controllers\\productcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0EBE5E5F-443C-4C9B-B72C-88B485568547}|APISuperMarket\\APISuperMarket.csproj|solutionrelative:apisupermarket\\controllers\\productcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{0EBE5E5F-443C-4C9B-B72C-88B485568547}|APISuperMarket\\APISuperMarket.csproj|d:\\supermarket\\apisupermarket\\apisupermarket\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
       "RelativeMoniker": "D:0:0:{0EBE5E5F-443C-4C9B-B72C-88B485568547}|APISuperMarket\\APISuperMarket.csproj|solutionrelative:apisupermarket\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{0EBE5E5F-443C-4C9B-B72C-88B485568547}|APISuperMarket\\APISuperMarket.csproj|d:\\supermarket\\apisupermarket\\apisupermarket\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{0EBE5E5F-443C-4C9B-B72C-88B485568547}|APISuperMarket\\APISuperMarket.csproj|solutionrelative:apisupermarket\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{0EBE5E5F-443C-4C9B-B72C-88B485568547}|APISuperMarket\\APISuperMarket.csproj|d:\\supermarket\\apisupermarket\\apisupermarket\\controllers\\usercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0EBE5E5F-443C-4C9B-B72C-88B485568547}|APISuperMarket\\APISuperMarket.csproj|solutionrelative:apisupermarket\\controllers\\usercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0EBE5E5F-443C-4C9B-B72C-88B485568547}|APISuperMarket\\APISuperMarket.csproj|d:\\supermarket\\apisupermarket\\apisupermarket\\dtos\\branddto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0EBE5E5F-443C-4C9B-B72C-88B485568547}|APISuperMarket\\APISuperMarket.csproj|solutionrelative:apisupermarket\\dtos\\branddto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0EBE5E5F-443C-4C9B-B72C-88B485568547}|APISuperMarket\\APISuperMarket.csproj|d:\\supermarket\\apisupermarket\\apisupermarket\\controllers\\authcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0EBE5E5F-443C-4C9B-B72C-88B485568547}|APISuperMarket\\APISuperMarket.csproj|solutionrelative:apisupermarket\\controllers\\authcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -34,7 +38,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 2,
+          "SelectedChildIndex": 5,
           "Children": [
             {
               "$type": "Bookmark",
@@ -46,20 +50,59 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "DataSuperMartContext.cs",
-              "DocumentMoniker": "D:\\supermarket\\APISuperMarket\\APISuperMarket\\Data\\DataSuperMartContext.cs",
-              "RelativeDocumentMoniker": "APISuperMarket\\Data\\DataSuperMartContext.cs",
-              "ToolTip": "D:\\supermarket\\APISuperMarket\\APISuperMarket\\Data\\DataSuperMartContext.cs",
-              "RelativeToolTip": "APISuperMarket\\Data\\DataSuperMartContext.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "DocumentIndex": 4,
+              "Title": "UserController.cs",
+              "DocumentMoniker": "D:\\supermarket\\APISuperMarket\\APISuperMarket\\Controllers\\UserController.cs",
+              "RelativeDocumentMoniker": "APISuperMarket\\Controllers\\UserController.cs",
+              "ToolTip": "D:\\supermarket\\APISuperMarket\\APISuperMarket\\Controllers\\UserController.cs",
+              "RelativeToolTip": "APISuperMarket\\Controllers\\UserController.cs",
+              "ViewState": "AQIAAAMAAAAAAAAAAAAAAAAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-03T16:24:21.981Z",
+              "WhenOpened": "2024-09-04T15:37:41.719Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 6,
+              "Title": "AuthController.cs",
+              "DocumentMoniker": "D:\\supermarket\\APISuperMarket\\APISuperMarket\\Controllers\\AuthController.cs",
+              "RelativeDocumentMoniker": "APISuperMarket\\Controllers\\AuthController.cs",
+              "ToolTip": "D:\\supermarket\\APISuperMarket\\APISuperMarket\\Controllers\\AuthController.cs",
+              "RelativeToolTip": "APISuperMarket\\Controllers\\AuthController.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABMAAAAFAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-04T15:32:13.855Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "appsettings.json",
+              "DocumentMoniker": "D:\\supermarket\\APISuperMarket\\APISuperMarket\\appsettings.json",
+              "RelativeDocumentMoniker": "APISuperMarket\\appsettings.json",
+              "ToolTip": "D:\\supermarket\\APISuperMarket\\APISuperMarket\\appsettings.json",
+              "RelativeToolTip": "APISuperMarket\\appsettings.json",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA8AAAAWAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2024-09-04T14:50:38.895Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "GoogleDriveService.cs",
+              "DocumentMoniker": "D:\\supermarket\\APISuperMarket\\APISuperMarket\\Data\\GoogleDriveService.cs",
+              "RelativeDocumentMoniker": "APISuperMarket\\Data\\GoogleDriveService.cs",
+              "ToolTip": "D:\\supermarket\\APISuperMarket\\APISuperMarket\\Data\\GoogleDriveService.cs",
+              "RelativeToolTip": "APISuperMarket\\Data\\GoogleDriveService.cs",
+              "ViewState": "AQIAABMAAAAAAAAAAAAQwBsAAAAyAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-04T14:46:37.25Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
               "Title": "BrandDTO.cs",
               "DocumentMoniker": "D:\\supermarket\\APISuperMarket\\APISuperMarket\\DTOs\\BrandDTO.cs",
               "RelativeDocumentMoniker": "APISuperMarket\\DTOs\\BrandDTO.cs",
@@ -72,52 +115,26 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "appsettings.json",
-              "DocumentMoniker": "D:\\supermarket\\APISuperMarket\\APISuperMarket\\appsettings.json",
-              "RelativeDocumentMoniker": "APISuperMarket\\appsettings.json",
-              "ToolTip": "D:\\supermarket\\APISuperMarket\\APISuperMarket\\appsettings.json",
-              "RelativeToolTip": "APISuperMarket\\appsettings.json",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
-              "WhenOpened": "2024-09-03T15:52:19.969Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "Program.cs",
-              "DocumentMoniker": "D:\\supermarket\\APISuperMarket\\APISuperMarket\\Program.cs",
-              "RelativeDocumentMoniker": "APISuperMarket\\Program.cs",
-              "ToolTip": "D:\\supermarket\\APISuperMarket\\APISuperMarket\\Program.cs",
-              "RelativeToolTip": "APISuperMarket\\Program.cs",
-              "ViewState": "AQIAADkAAAAAAAAAAAAAAAAAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-03T15:52:11.501Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 1,
               "Title": "ProductDTO.cs",
               "DocumentMoniker": "D:\\supermarket\\APISuperMarket\\APISuperMarket\\DTOs\\ProductDTO.cs",
               "RelativeDocumentMoniker": "APISuperMarket\\DTOs\\ProductDTO.cs",
               "ToolTip": "D:\\supermarket\\APISuperMarket\\APISuperMarket\\DTOs\\ProductDTO.cs",
               "RelativeToolTip": "APISuperMarket\\DTOs\\ProductDTO.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAUAAAAjAAAA",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAsAAAArAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-09-02T07:09:42.811Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 2,
               "Title": "ProductController.cs",
               "DocumentMoniker": "D:\\supermarket\\APISuperMarket\\APISuperMarket\\Controllers\\ProductController.cs",
               "RelativeDocumentMoniker": "APISuperMarket\\Controllers\\ProductController.cs",
               "ToolTip": "D:\\supermarket\\APISuperMarket\\APISuperMarket\\Controllers\\ProductController.cs",
               "RelativeToolTip": "APISuperMarket\\Controllers\\ProductController.cs",
-              "ViewState": "AQIAADYAAAAAAAAAAAAuwEcAAAA0AAAA",
+              "ViewState": "AQIAAEYAAAAAAAAAAAAkwIIAAAARAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-09-02T03:07:31.181Z",
               "EditorCaption": ""

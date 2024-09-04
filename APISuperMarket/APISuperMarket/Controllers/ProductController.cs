@@ -12,9 +12,13 @@ namespace APISuperMarket.Controllers
     public class ProductController : ControllerBase
     {
         private readonly DataSuperMartContext _context;
-        public ProductController(DataSuperMartContext context)
+        private readonly IConfiguration _configuration;
+        private readonly GoogleDriveService _googleDriveService;
+        public ProductController(DataSuperMartContext context, GoogleDriveService googleDriveService, IConfiguration configuration)
         {
             _context = context;
+            _googleDriveService = googleDriveService;
+            _configuration = configuration;
         }
         [HttpGet("products")]
         public IActionResult GetProducts()
@@ -81,7 +85,7 @@ namespace APISuperMarket.Controllers
         }
 
         [HttpPost("addproduct")]
-        public IActionResult AddProduct([FromBody] ProductDTO product)
+        public async Task<IActionResult> AddProduct([FromBody] ProductDTO product)
         {
             try
             {
@@ -103,8 +107,8 @@ namespace APISuperMarket.Controllers
                 var category = _context.Categories.FirstOrDefault(c => c.CategoryName == product.CategoryName);
                 if (category == null)
                 {
-                    //_context.Categories.Add(newCategory);
-                    //_context.SaveChanges();
+                    _context.Categories.Add(newCategory);
+                    _context.SaveChanges();
                 }
                 else
                 {
@@ -128,12 +132,47 @@ namespace APISuperMarket.Controllers
                     ProductId = newProduct.ProductId,
                     CategoryId = newCategory.CategoryId
                 };
+                await AddImageToProductAsync(newProduct.ProductId, product.ImageProduct);
                 _context.ProductCategories.Add(newProductCategory);
                 _context.SaveChanges();
                 return Ok("Thêm sản phẩm thành công.");
             }catch (Exception ex)
             {
                 return NotFound(ex);
+            }
+        }
+
+        private async Task<bool> AddImageToProductAsync(int productId, List<IFormFile> images)
+        {
+            string IDURL = _configuration["IDDrive:IDURLImageProduct"];
+            try
+            {
+                foreach (var image in images)
+                {
+                    // Lưu file tạm thời lên server để upload lên Google Drive
+                    var tempFilePath = Path.GetTempFileName();
+                    using (var stream = new FileStream(tempFilePath, FileMode.Create))
+                    {
+                        await image.CopyToAsync(stream);
+                    }
+
+                    // Upload file lên Google Drive
+                    var fileId = await _googleDriveService.UploadFileAsync(tempFilePath,IDURL);
+                    var link = _googleDriveService.GetFileLink(fileId);
+                    var newImage = new ProductImage
+                    {
+                        ProductId = productId,
+                        ImageUrl = link
+                    };
+                    _context.ProductImages.Add(newImage);
+                }
+                _context.SaveChanges();
+                return true;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                return false;
             }
         }
     }

@@ -21,12 +21,12 @@ namespace APISuperMarket.Data
             });
         }
 
-        public async Task<string> UploadFileAsync(string filePath)
+        public async Task<string> UploadFileAsync(string filePath, string IDURL)
         {
             var fileMetadata = new Google.Apis.Drive.v3.Data.File()
             {
                 Name = Path.GetFileName(filePath),
-                Parents = new List<string> { "1r44tzqCAn7gQuf_0Zd0-u6bhl4zs719X" }
+                Parents = new List<string> { IDURL }
             };
 
             FilesResource.CreateMediaUpload request;

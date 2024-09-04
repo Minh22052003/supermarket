@@ -10,11 +10,13 @@ namespace APISuperMarket.Controllers
     public class UserController : ControllerBase
     {
         private readonly DataSuperMartContext _context;
+        private readonly IConfiguration _configuration;
         private readonly GoogleDriveService _googleDriveService;
-        public UserController(DataSuperMartContext context, GoogleDriveService googleDriveService)
+        public UserController(DataSuperMartContext context, GoogleDriveService googleDriveService, IConfiguration configuration)
         {
             _context = context;
             _googleDriveService = googleDriveService;
+            _configuration = configuration;
 
         }
         [HttpGet("profile")]
@@ -83,6 +85,7 @@ namespace APISuperMarket.Controllers
         [HttpPut("editimageprofile")]
         public async Task<IActionResult> UploadProfileImageAsync(IFormFile file)
         {
+            string IDURLProfile = _configuration["IDDrive:IDURLImageProfileCustomer"];
             try
             {
                 var customerId = User.FindFirst("UserId")?.Value;
@@ -108,7 +111,7 @@ namespace APISuperMarket.Controllers
                 }
 
                 // Upload file lên Google Drive
-                var fileId = await _googleDriveService.UploadFileAsync(tempFilePath);
+                var fileId = await _googleDriveService.UploadFileAsync(tempFilePath,IDURLProfile);
                 var link = _googleDriveService.GetFileLink(fileId);
 
 
