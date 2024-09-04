@@ -85,7 +85,7 @@ namespace APISuperMarket.Controllers
         }
 
         [HttpPost("addproduct")]
-        public async Task<IActionResult> AddProduct([FromBody] ProductDTO product)
+        public async Task<IActionResult> AddProduct([FromForm] ProductDTO product)
         {
             try
             {
