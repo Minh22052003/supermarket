@@ -60,29 +60,7 @@ namespace APISuperMarket.Controllers
             return Ok(product);
         }
 
-        [HttpPost("addbrand")]
-        public IActionResult AddBrand([FromBody] BrandDTO brand)
-        {
-            try
-            {
-                var brandtmp = _context.Brands.FirstOrDefault(b => b.BrandName == brand.BrandName);
-                if (brandtmp != null)
-                {
-                    return NotFound("Tên thương hiệu đã tồn tại.");
-                }
-                var newBrand = new Brand
-                {
-                    BrandName = brand.BrandName,
-                    Description = brand.Description,
-                    NumberOfProducts = brand.NumberOfProducts
-                };
-                return Ok(newBrand.BrandName);
-            }
-            catch (Exception ex)
-            {
-                return NotFound(ex);
-            }
-        }
+        
 
         [HttpPost("addproduct")]
         public async Task<IActionResult> AddProduct([FromForm] ProductDTO product)
