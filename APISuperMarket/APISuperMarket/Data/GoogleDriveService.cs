@@ -64,9 +64,29 @@ namespace APISuperMarket.Data
             }
         }
 
+        public bool DeleteFileAsync(string fileId)
+        {
+            try
+            {
+                var request = _driveService.Files.Delete(fileId);
+                return true;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"An error occurred: {ex.Message}");
+                return false;
+            }
+        }   
+
         public string GetFileLink(string fileId)
         {
             return $"https://drive.google.com/file/d/{fileId}/view";
+        }
+
+        public string GetFileId(string fileLink)
+        {
+            var fileId = fileLink.Split("/").Last();
+            return fileId;
         }
 
     }

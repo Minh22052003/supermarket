@@ -3,6 +3,7 @@ using APISuperMarket.DTOs;
 using APISuperMarket.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace APISuperMarket.Controllers
 {
@@ -13,13 +14,16 @@ namespace APISuperMarket.Controllers
         private readonly DataSuperMartContext _context;
         private readonly IConfiguration _configuration;
         private readonly GoogleDriveService _googleDriveService;
-
-        public BrandController(DataSuperMartContext context, IConfiguration configuration, GoogleDriveService googleDriveService)
+        public BrandController(DataSuperMartContext context, GoogleDriveService googleDriveService, IConfiguration configuration)
         {
             _context = context;
-            _configuration = configuration;
             _googleDriveService = googleDriveService;
+            _configuration = configuration;
         }
+
+
+
+
         [HttpPost("addbrand")]
         public IActionResult AddBrand([FromForm] BrandDTO brand)
         {
@@ -36,7 +40,6 @@ namespace APISuperMarket.Controllers
                     Description = brand.Description,
                     LogoBrandUrl = AddImagetoLogoBrand(brand.Logo_Brand).Result,
                     CreateAt = DateTime.Now
-
                 };
                 return Ok(newBrand.BrandName);
             }
@@ -46,7 +49,64 @@ namespace APISuperMarket.Controllers
             }
         }
 
-        public async Task<string> AddImagetoLogoBrand(IFormFile file)
+        [HttpPut("updatebrand")]
+        public IActionResult UpdateBrand([FromForm] BrandDTO brand)
+        {
+            try
+            {
+                var brandtmp = _context.Brands.FirstOrDefault(b => b.BrandName.ToLower() == brand.BrandName.ToLower());
+                if (brandtmp == null)
+                {
+                    return NotFound("Tên thương hiệu không tồn tại.");
+                }
+
+                brandtmp.Description = brand.Description;
+                var fileid = _googleDriveService.GetFileId(brandtmp.LogoBrandUrl);
+                bool check =_googleDriveService.DeleteFileAsync(fileid);
+                if (check)
+                {
+                    return NotFound("Xóa ảnh không thành công");
+                }
+                brandtmp.LogoBrandUrl = AddImagetoLogoBrand(brand.Logo_Brand).Result;
+                brandtmp.UpdateAt = DateTime.Now;
+
+                _context.SaveChanges();
+                return Ok("Cập nhật thành công");
+            }
+            catch (Exception ex)
+            {
+                return NotFound(ex);
+            }
+        }
+
+        [HttpDelete("deletebrand")]
+        public IActionResult DeleteBrand(int id)
+        {
+            try
+            {
+                var brand = _context.Brands.FirstOrDefault(b => b.BrandId == id);
+                if (brand == null)
+                {
+                    return NotFound("Thương hiệu không tồn tại.");
+                }
+                var fileid = _googleDriveService.GetFileId(brand.LogoBrandUrl);
+                bool check = _googleDriveService.DeleteFileAsync(fileid);
+                if (!check)
+                {
+                    return NotFound("Xóa ảnh không thành công");
+                }
+                _context.Brands.Remove(brand);
+                _context.SaveChanges();
+                return Ok("Xóa thành công");
+            }
+            catch (Exception ex)
+            {
+                return NotFound(ex);
+            }
+        }
+
+
+        private async Task<string> AddImagetoLogoBrand(IFormFile file)
         {
             string IDURLLogo = _configuration["IDDrive:IDURLImageLogoBrand"];
             try
@@ -71,6 +131,5 @@ namespace APISuperMarket.Controllers
                 return "";
             }
         }
-
     }
 }

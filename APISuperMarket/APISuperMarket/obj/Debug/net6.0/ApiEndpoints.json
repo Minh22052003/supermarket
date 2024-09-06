@@ -32,17 +32,27 @@
     "ReturnTypes": []
   },
   {
-    "ContainingType": "APISuperMarket.Controllers.ProductController",
+    "ContainingType": "APISuperMarket.Controllers.BrandController",
     "Method": "AddBrand",
-    "RelativePath": "api/Product/addbrand",
+    "RelativePath": "api/Brand/addbrand",
     "HttpMethod": "POST",
     "IsController": true,
     "Order": 0,
     "Parameters": [
       {
-        "Name": "brand",
-        "Type": "APISuperMarket.DTOs.BrandDTO",
-        "IsRequired": true
+        "Name": "BrandName",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "Description",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "Logo_Brand",
+        "Type": "Microsoft.AspNetCore.Http.IFormFile",
+        "IsRequired": false
       }
     ],
     "ReturnTypes": []
@@ -165,25 +175,5 @@
     "Order": 0,
     "Parameters": [],
     "ReturnTypes": []
-  },
-  {
-    "ContainingType": "APISuperMarket.Controllers.WeatherForecastController",
-    "Method": "Get",
-    "RelativePath": "WeatherForecast",
-    "HttpMethod": "GET",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [],
-    "ReturnTypes": [
-      {
-        "Type": "System.Collections.Generic.IEnumerable\u00601[[APISuperMarket.WeatherForecast, APISuperMarket, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
-        "MediaTypes": [
-          "text/plain",
-          "application/json",
-          "text/json"
-        ],
-        "StatusCode": 200
-      }
-    ]
   }
 ]
