@@ -69,6 +69,7 @@ namespace APISuperMarket.Data
             try
             {
                 var request = _driveService.Files.Delete(fileId);
+                request.Execute();
                 return true;
             }
             catch (Exception ex)
@@ -85,9 +86,10 @@ namespace APISuperMarket.Data
 
         public string GetFileId(string fileLink)
         {
-            var fileId = fileLink.Split("/").Last();
+            var fileId = fileLink.Split("/d/")[1].Split('/')[0];
             return fileId;
         }
+
 
     }
 }

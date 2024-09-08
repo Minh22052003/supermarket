@@ -21,6 +21,19 @@ namespace APISuperMarket.Controllers
             _configuration = configuration;
         }
 
+        [HttpGet("getallbrand")]
+        public IActionResult GetAllBrand()
+        {
+            try
+            {
+                var brands = _context.Brands.ToList();
+                return Ok(brands);
+            }
+            catch (Exception ex)
+            {
+                return NotFound(ex);
+            }
+        }
 
 
 
@@ -41,6 +54,8 @@ namespace APISuperMarket.Controllers
                     LogoBrandUrl = AddImagetoLogoBrand(brand.Logo_Brand).Result,
                     CreateAt = DateTime.Now
                 };
+                _context.Brands.Add(newBrand);
+                _context.SaveChanges();
                 return Ok(newBrand.BrandName);
             }
             catch (Exception ex)
@@ -63,7 +78,7 @@ namespace APISuperMarket.Controllers
                 brandtmp.Description = brand.Description;
                 var fileid = _googleDriveService.GetFileId(brandtmp.LogoBrandUrl);
                 bool check =_googleDriveService.DeleteFileAsync(fileid);
-                if (check)
+                if (!check)
                 {
                     return NotFound("Xóa ảnh không thành công");
                 }

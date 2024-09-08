@@ -58,6 +58,58 @@
     "ReturnTypes": []
   },
   {
+    "ContainingType": "APISuperMarket.Controllers.BrandController",
+    "Method": "DeleteBrand",
+    "RelativePath": "api/Brand/deletebrand",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "APISuperMarket.Controllers.BrandController",
+    "Method": "GetAllBrand",
+    "RelativePath": "api/Brand/getallbrand",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "APISuperMarket.Controllers.BrandController",
+    "Method": "UpdateBrand",
+    "RelativePath": "api/Brand/updatebrand",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "BrandName",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "Description",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "Logo_Brand",
+        "Type": "Microsoft.AspNetCore.Http.IFormFile",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "APISuperMarket.Controllers.ProductController",
     "Method": "AddProduct",
     "RelativePath": "api/Product/addproduct",

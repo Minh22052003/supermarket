@@ -34,7 +34,8 @@ namespace APISuperMarket.Controllers
                                 b.BrandName,
                                 p.Description,
                                 p.Expiry,
-                                p.InventoryQuantity
+                                p.InventoryQuantity,
+                                ProductImages = p.ProductImages.Select(pi => pi.ImageUrl).ToList()
                             }).ToList();
             return Ok(products);
         }
@@ -42,16 +43,19 @@ namespace APISuperMarket.Controllers
         public IActionResult GetProduct(int id)
         {
             var product = (from p in _context.Products
+                           join b in _context.Brands on p.BrandId equals b.BrandId
                            where p.ProductId == id
                            select new
                            {
                                p.ProductId,
                                p.ProductName,
+                               Categories = p.ProductCategories.Select(pc => pc.Category.CategoryName).ToList(),
                                p.Price,
-                               p.BrandId,
+                               b.BrandName,
                                p.Description,
                                p.Expiry,
-                               p.InventoryQuantity
+                               p.InventoryQuantity,
+                               ProductImages = p.ProductImages.Select(pi => pi.ImageUrl).ToList()
                            }).FirstOrDefault();
             if (product == null)
             {
