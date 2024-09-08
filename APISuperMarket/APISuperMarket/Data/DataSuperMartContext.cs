@@ -114,17 +114,11 @@ namespace APISuperMarket.Data
 
                 entity.Property(e => e.BankAccountId).HasColumnName("Bank_AccountID");
 
-                entity.Property(e => e.AccountHolderName)
-                    .HasMaxLength(250)
-                    .IsUnicode(false)
-                    .HasColumnName("Account_Holder_Name");
+                entity.Property(e => e.AccountHolderName).HasColumnName("Account_Holder_Name");
 
                 entity.Property(e => e.AccountNumber).HasColumnName("Account_Number");
 
-                entity.Property(e => e.BankName)
-                    .HasMaxLength(250)
-                    .IsUnicode(false)
-                    .HasColumnName("Bank_Name");
+                entity.Property(e => e.BankName).HasColumnName("Bank_Name");
 
                 entity.Property(e => e.CreatedAt)
                     .HasColumnType("datetime")
@@ -157,10 +151,7 @@ namespace APISuperMarket.Data
 
                 entity.Property(e => e.AccountNumber).HasColumnName("Account_Number");
 
-                entity.Property(e => e.BankName)
-                    .HasMaxLength(250)
-                    .IsUnicode(false)
-                    .HasColumnName("Bank_Name");
+                entity.Property(e => e.BankName).HasColumnName("Bank_Name");
 
                 entity.Property(e => e.CreateAt)
                     .HasColumnType("datetime")
@@ -168,10 +159,6 @@ namespace APISuperMarket.Data
                     .HasDefaultValueSql("(getdate())");
 
                 entity.Property(e => e.OrderId).HasColumnName("OrderID");
-
-                entity.Property(e => e.Status)
-                    .HasMaxLength(250)
-                    .IsUnicode(false);
 
                 entity.Property(e => e.TransferDate)
                     .HasColumnType("datetime")
@@ -271,21 +258,24 @@ namespace APISuperMarket.Data
 
             modelBuilder.Entity<CartProduct>(entity =>
             {
-                entity.HasNoKey();
+                entity.HasKey(e => e.CartProductsId)
+                    .HasName("PK__Cart_Pro__A080AFB0CFC975CE");
 
                 entity.ToTable("Cart_Products");
+
+                entity.Property(e => e.CartProductsId).HasColumnName("Cart_ProductsID");
 
                 entity.Property(e => e.CartId).HasColumnName("CartID");
 
                 entity.Property(e => e.ProductId).HasColumnName("ProductID");
 
                 entity.HasOne(d => d.Cart)
-                    .WithMany()
+                    .WithMany(p => p.CartProducts)
                     .HasForeignKey(d => d.CartId)
                     .HasConstraintName("FK__Cart_Prod__CartI__18EBB532");
 
                 entity.HasOne(d => d.Product)
-                    .WithMany()
+                    .WithMany(p => p.CartProducts)
                     .HasForeignKey(d => d.ProductId)
                     .HasConstraintName("FK__Cart_Prod__Produ__17F790F9");
             });
@@ -319,10 +309,7 @@ namespace APISuperMarket.Data
 
                 entity.Property(e => e.BirthDay).HasColumnType("datetime");
 
-                entity.Property(e => e.CustomerName)
-                    .HasMaxLength(50)
-                    .IsUnicode(false)
-                    .HasColumnName("Customer_Name");
+                entity.Property(e => e.CustomerName).HasColumnName("Customer_Name");
 
                 entity.Property(e => e.GenderId).HasColumnName("GenderID");
 
@@ -378,10 +365,7 @@ namespace APISuperMarket.Data
                     .HasColumnName("Change_Date")
                     .HasDefaultValueSql("(getdate())");
 
-                entity.Property(e => e.ChangeDescription)
-                    .HasMaxLength(250)
-                    .IsUnicode(false)
-                    .HasColumnName("Change_Description");
+                entity.Property(e => e.ChangeDescription).HasColumnName("Change_Description");
 
                 entity.Property(e => e.ChangeTypeId).HasColumnName("Change_TypeID");
 
@@ -422,10 +406,6 @@ namespace APISuperMarket.Data
 
                 entity.Property(e => e.CurrentUsages).HasColumnName("Current_Usages");
 
-                entity.Property(e => e.Description)
-                    .HasMaxLength(250)
-                    .IsUnicode(false);
-
                 entity.Property(e => e.DiscountAmount).HasColumnName("Discount_Amount");
 
                 entity.Property(e => e.DiscountPercentage).HasColumnName("Discount_Percentage");
@@ -456,10 +436,7 @@ namespace APISuperMarket.Data
 
                 entity.Property(e => e.GenderId).HasColumnName("GenderID");
 
-                entity.Property(e => e.GenderName)
-                    .HasMaxLength(20)
-                    .IsUnicode(false)
-                    .HasColumnName("Gender_Name");
+                entity.Property(e => e.GenderName).HasColumnName("Gender_Name");
             });
 
             modelBuilder.Entity<Mail>(entity =>
@@ -523,10 +500,7 @@ namespace APISuperMarket.Data
                     .HasColumnName("Change_Date")
                     .HasDefaultValueSql("(getdate())");
 
-                entity.Property(e => e.ChangeDescription)
-                    .HasMaxLength(250)
-                    .IsUnicode(false)
-                    .HasColumnName("Change_Description");
+                entity.Property(e => e.ChangeDescription).HasColumnName("Change_Description");
 
                 entity.Property(e => e.ChangeTypeId).HasColumnName("Change_TypeID");
 
@@ -565,10 +539,7 @@ namespace APISuperMarket.Data
 
                 entity.Property(e => e.ProductId).HasColumnName("ProductID");
 
-                entity.Property(e => e.ProductName)
-                    .HasMaxLength(250)
-                    .IsUnicode(false)
-                    .HasColumnName("Product_Name");
+                entity.Property(e => e.ProductName).HasColumnName("Product_Name");
 
                 entity.Property(e => e.TotalPrice).HasColumnName("Total_Price");
 
@@ -594,14 +565,7 @@ namespace APISuperMarket.Data
 
                 entity.Property(e => e.OrderStatusId).HasColumnName("Order_StatusID");
 
-                entity.Property(e => e.Description)
-                    .HasMaxLength(500)
-                    .IsUnicode(false);
-
-                entity.Property(e => e.StatusName)
-                    .HasMaxLength(250)
-                    .IsUnicode(false)
-                    .HasColumnName("Status_Name");
+                entity.Property(e => e.StatusName).HasColumnName("Status_Name");
             });
 
             modelBuilder.Entity<Permission>(entity =>
@@ -610,10 +574,7 @@ namespace APISuperMarket.Data
 
                 entity.Property(e => e.PermissionId).HasColumnName("PermissionID");
 
-                entity.Property(e => e.PermissionName)
-                    .HasMaxLength(250)
-                    .IsUnicode(false)
-                    .HasColumnName("Permission_Name");
+                entity.Property(e => e.PermissionName).HasColumnName("Permission_Name");
             });
 
             modelBuilder.Entity<Product>(entity =>
@@ -672,10 +633,7 @@ namespace APISuperMarket.Data
                     .HasColumnName("Change_Date")
                     .HasDefaultValueSql("(getdate())");
 
-                entity.Property(e => e.ChangeDescription)
-                    .HasMaxLength(250)
-                    .IsUnicode(false)
-                    .HasColumnName("Change_Description");
+                entity.Property(e => e.ChangeDescription).HasColumnName("Change_Description");
 
                 entity.Property(e => e.ChangeTypeId).HasColumnName("Change_TypeID");
 
@@ -729,10 +687,6 @@ namespace APISuperMarket.Data
                 entity.ToTable("Product_Reviews");
 
                 entity.Property(e => e.ProductReviewsId).HasColumnName("Product_ReviewsID");
-
-                entity.Property(e => e.Comment)
-                    .HasMaxLength(500)
-                    .IsUnicode(false);
 
                 entity.Property(e => e.CreateAt)
                     .HasColumnType("datetime")
@@ -799,10 +753,7 @@ namespace APISuperMarket.Data
 
                 entity.Property(e => e.RoleId).HasColumnName("RoleID");
 
-                entity.Property(e => e.RoleName)
-                    .HasMaxLength(250)
-                    .IsUnicode(false)
-                    .HasColumnName("Role_Name");
+                entity.Property(e => e.RoleName).HasColumnName("Role_Name");
             });
 
             modelBuilder.Entity<RolePermission>(entity =>
@@ -832,10 +783,7 @@ namespace APISuperMarket.Data
 
                 entity.Property(e => e.StatusAccId).HasColumnName("Status_AccID");
 
-                entity.Property(e => e.StatusAccName)
-                    .HasMaxLength(250)
-                    .IsUnicode(false)
-                    .HasColumnName("Status_Acc_Name");
+                entity.Property(e => e.StatusAccName).HasColumnName("Status_Acc_Name");
             });
 
             modelBuilder.Entity<StoreInfo>(entity =>
@@ -844,49 +792,16 @@ namespace APISuperMarket.Data
 
                 entity.Property(e => e.StoreInfoId).HasColumnName("Store_InfoID");
 
-                entity.Property(e => e.AddressLine1)
-                    .HasMaxLength(255)
-                    .IsUnicode(false);
-
-                entity.Property(e => e.BannerUrl)
-                    .HasMaxLength(255)
-                    .IsUnicode(false)
-                    .HasColumnName("Banner_URL");
-
-                entity.Property(e => e.City)
-                    .HasMaxLength(50)
-                    .IsUnicode(false);
-
-                entity.Property(e => e.Commune)
-                    .HasMaxLength(50)
-                    .IsUnicode(false);
-
-                entity.Property(e => e.Country)
-                    .HasMaxLength(50)
-                    .IsUnicode(false);
+                entity.Property(e => e.BannerUrl).HasColumnName("Banner_URL");
 
                 entity.Property(e => e.CreatedAt)
                     .HasColumnType("datetime")
                     .HasColumnName("Created_At")
                     .HasDefaultValueSql("(getdate())");
 
-                entity.Property(e => e.District)
-                    .HasMaxLength(50)
-                    .IsUnicode(false);
+                entity.Property(e => e.LogoUrl).HasColumnName("Logo_URL");
 
-                entity.Property(e => e.Hotline)
-                    .HasMaxLength(20)
-                    .IsUnicode(false);
-
-                entity.Property(e => e.LogoUrl)
-                    .HasMaxLength(255)
-                    .IsUnicode(false)
-                    .HasColumnName("Logo_URL");
-
-                entity.Property(e => e.StoreName)
-                    .HasMaxLength(50)
-                    .IsUnicode(false)
-                    .HasColumnName("Store_Name");
+                entity.Property(e => e.StoreName).HasColumnName("Store_Name");
 
                 entity.Property(e => e.UpdatedAt)
                     .HasColumnType("datetime")
@@ -905,10 +820,7 @@ namespace APISuperMarket.Data
                     .HasColumnName("Change_Date")
                     .HasDefaultValueSql("(getdate())");
 
-                entity.Property(e => e.ChangeDescription)
-                    .HasMaxLength(250)
-                    .IsUnicode(false)
-                    .HasColumnName("Change_Description");
+                entity.Property(e => e.ChangeDescription).HasColumnName("Change_Description");
 
                 entity.Property(e => e.ChangeTypeId).HasColumnName("Change_TypeID");
 
@@ -945,10 +857,7 @@ namespace APISuperMarket.Data
                     .HasColumnName("Change_Date")
                     .HasDefaultValueSql("(getdate())");
 
-                entity.Property(e => e.ChangeDescription)
-                    .HasMaxLength(250)
-                    .IsUnicode(false)
-                    .HasColumnName("Change_Description");
+                entity.Property(e => e.ChangeDescription).HasColumnName("Change_Description");
 
                 entity.Property(e => e.ChangeTypeId).HasColumnName("Change_TypeID");
 

@@ -110,6 +110,32 @@
     "ReturnTypes": []
   },
   {
+    "ContainingType": "APISuperMarket.Controllers.CartController",
+    "Method": "AddToCart",
+    "RelativePath": "api/Cart/addtocart",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "cartProduct",
+        "Type": "APISuperMarket.DTOs.CartProductDTO",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "APISuperMarket.Controllers.CartController",
+    "Method": "GetCart",
+    "RelativePath": "api/Cart/getcart",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "APISuperMarket.Controllers.ProductController",
     "Method": "AddProduct",
     "RelativePath": "api/Product/addproduct",

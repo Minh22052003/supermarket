@@ -1,4 +1,7 @@
 ﻿using APISuperMarket.Data;
+using APISuperMarket.DTOs;
+using APISuperMarket.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -13,7 +16,8 @@ namespace APISuperMarket.Controllers
         {
             _context = context;
         }
-        [HttpGet("cart")]
+        [Authorize(Roles = "User")]
+        [HttpGet("getcart")]
         public IActionResult GetCart()
         {
             var customerId = User.FindFirst("UserId")?.Value;
@@ -22,36 +26,59 @@ namespace APISuperMarket.Controllers
                 return NotFound("Không tìm thấy người dùng.");
             }
             var cart = (from c in _context.Carts
-                        join p in _context.Products on c.ProductId equals p.ProductId
+                        join cp in _context.CartProducts on c.CartId equals cp.CartId
+                        join p in _context.Products on cp.ProductId equals p.ProductId
+                        where c.CustomerId == Convert.ToInt32(customerId)
                         select new
                         {
                             c.CartId,
-                            c.ProductId,
+                            p.ProductId,
                             p.ProductName,
                             p.Price,
-                            c.Quantity,
-                            Total = p.Price * c.Quantity
+                            cp.Quantity
                         }).ToList();
             return Ok(cart);
+
         }
-        [HttpPost("cart")]
-        public IActionResult AddToCart([FromBody] Cart cart)
+
+        [Authorize(Roles = "User")]
+        [HttpPost("addtocart")]
+        public IActionResult AddToCart([FromBody] CartProductDTO cartProduct)
         {
-            _context.Carts.Add(cart);
-            _context.SaveChanges();
-            return Ok();
-        }
-        [HttpDelete("cart/{id}")]
-        public IActionResult RemoveFromCart(int id)
-        {
-            var cart = _context.Carts.Find(id);
+            var customerId = User.FindFirst("UserId")?.Value;
+            if (customerId == null)
+            {
+                return NotFound("Không tìm thấy người dùng.");
+            }
+            var cart = _context.Carts.FirstOrDefault(c => c.CustomerId == Convert.ToInt32(customerId));
             if (cart == null)
             {
-                return NotFound();
+                cart = new Cart
+                {
+                    CustomerId = Convert.ToInt32(customerId)
+                };
+                _context.Carts.Add(cart);
+                _context.SaveChanges();
             }
-            _context.Carts.Remove(cart);
+            var cartProductInDb = _context.CartProducts.FirstOrDefault(cp => cp.CartId == cart.CartId && cp.ProductId == cartProduct.ProductId);
+            if (cartProductInDb == null)
+            {
+                cartProductInDb = new CartProduct
+                {
+                    CartId = cart.CartId,
+                    ProductId = cartProduct.ProductId,
+                    Quantity = cartProduct.Quantity
+                };
+                _context.CartProducts.Add(cartProductInDb);
+                _context.SaveChanges();
+            }
+            else
+            {
+                cartProductInDb.Quantity += cartProduct.Quantity;
+            }
             _context.SaveChanges();
-            return Ok();
+            return Ok("Thêm sản phẩm vào giỏ hàng thành công.");
         }
+
     }
 }

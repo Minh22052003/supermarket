@@ -7,6 +7,7 @@ namespace APISuperMarket.Models
     {
         public Product()
         {
+            CartProducts = new HashSet<CartProduct>();
             OrderDetails = new HashSet<OrderDetail>();
             ProductCategories = new HashSet<ProductCategory>();
             ProductChanges = new HashSet<ProductChange>();
@@ -23,6 +24,7 @@ namespace APISuperMarket.Models
         public decimal? InventoryQuantity { get; set; }
 
         public virtual Brand? Brand { get; set; }
+        public virtual ICollection<CartProduct> CartProducts { get; set; }
         public virtual ICollection<OrderDetail> OrderDetails { get; set; }
         public virtual ICollection<ProductCategory> ProductCategories { get; set; }
         public virtual ICollection<ProductChange> ProductChanges { get; set; }
