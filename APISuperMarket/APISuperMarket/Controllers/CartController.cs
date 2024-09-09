@@ -4,6 +4,7 @@ using APISuperMarket.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using System.Security.Cryptography.X509Certificates;
 
 namespace APISuperMarket.Controllers
 {
@@ -45,39 +46,120 @@ namespace APISuperMarket.Controllers
         [HttpPost("addtocart")]
         public IActionResult AddToCart([FromBody] CartProductDTO cartProduct)
         {
-            var customerId = User.FindFirst("UserId")?.Value;
-            if (customerId == null)
+            try
             {
-                return NotFound("Không tìm thấy người dùng.");
-            }
-            var cart = _context.Carts.FirstOrDefault(c => c.CustomerId == Convert.ToInt32(customerId));
-            if (cart == null)
-            {
-                cart = new Cart
+                if (cartProduct.Action == "Add")
                 {
-                    CustomerId = Convert.ToInt32(customerId)
-                };
-                _context.Carts.Add(cart);
-                _context.SaveChanges();
-            }
-            var cartProductInDb = _context.CartProducts.FirstOrDefault(cp => cp.CartId == cart.CartId && cp.ProductId == cartProduct.ProductId);
-            if (cartProductInDb == null)
-            {
-                cartProductInDb = new CartProduct
+                    var customerId = User.FindFirst("UserId")?.Value;
+                    if (customerId == null)
+                    {
+                        return NotFound("Không tìm thấy người dùng.");
+                    }
+                    var cart = _context.Carts.FirstOrDefault(c => c.CustomerId == Convert.ToInt32(customerId));
+                    if (cart == null)
+                    {
+                        cart = new Cart
+                        {
+                            CustomerId = Convert.ToInt32(customerId)
+                        };
+                        _context.Carts.Add(cart);
+                        _context.SaveChanges();
+                    }
+                    var cartProductInDb = _context.CartProducts.FirstOrDefault(cp => cp.CartId == cart.CartId && cp.ProductId == cartProduct.ProductId);
+                    if (cartProductInDb == null)
+                    {
+                        cartProductInDb = new CartProduct
+                        {
+                            CartId = cart.CartId,
+                            ProductId = cartProduct.ProductId,
+                            Quantity = cartProduct.Quantity
+                        };
+                        _context.CartProducts.Add(cartProductInDb);
+                        _context.SaveChanges();
+                    }
+                    else
+                    {
+                        cartProductInDb.Quantity += cartProduct.Quantity;
+                    }
+                    _context.SaveChanges();
+                    return Ok("Thêm sản phẩm vào giỏ hàng thành công.");
+                }
+                else
                 {
-                    CartId = cart.CartId,
-                    ProductId = cartProduct.ProductId,
-                    Quantity = cartProduct.Quantity
-                };
-                _context.CartProducts.Add(cartProductInDb);
-                _context.SaveChanges();
+                    return NotFound();
+                }
+
             }
-            else
+            catch (Exception ex)
             {
-                cartProductInDb.Quantity += cartProduct.Quantity;
+                return BadRequest(ex);
             }
-            _context.SaveChanges();
-            return Ok("Thêm sản phẩm vào giỏ hàng thành công.");
+            
+        }
+
+        [Authorize(Roles= "User")]
+        [HttpDelete("deletecartproduct/{productId}")]
+        public IActionResult DeleteCartProduct(int productId)
+        {
+            try
+            { 
+                var customerId = User.FindFirst("UserId")?.Value;
+                if (customerId == null)
+                {
+                    return NotFound("Không tìm thấy người dùng.");
+                }
+                var cart = _context.Carts.FirstOrDefault(c => c.CustomerId == Convert.ToInt32(customerId));
+                if (cart == null)
+                {
+                    return NotFound("Không tìm thấy giỏ hàng.");
+                }
+                var cartProduct = _context.CartProducts.FirstOrDefault(cp => cp.CartId == cart.CartId && cp.ProductId == productId);
+                if (cartProduct == null)
+                {
+                    return NotFound("Không tìm thấy sản phẩm trong giỏ hàng.");
+                }
+                _context.CartProducts.Remove(cartProduct);
+                _context.SaveChanges();
+                return Ok("Xóa sản phẩm khỏi giỏ hàng thành công.");
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex);
+            }
+
+
+
+        }
+
+        [Authorize(Roles="User")]
+        [HttpPut("updatecartproduct")]
+        public IActionResult UpdateCart([FromBody] CartProductDTO cartProduct)
+        {
+            try
+            {
+                var customerId = User.FindFirst("UserId")?.Value;
+                if (customerId == null)
+                {
+                    return NotFound("Không tìm thấy người dùng.");
+                }
+                var cart = _context.Carts.FirstOrDefault(c => c.CustomerId == Convert.ToInt32(customerId));
+                if (cart == null)
+                {
+                    return NotFound("Không tìm thấy giỏ hàng.");
+                }
+                var cartProductInDb = _context.CartProducts.FirstOrDefault(cp => cp.CartId == cart.CartId && cp.ProductId == cartProduct.ProductId);
+                if (cartProductInDb == null)
+                {
+                    return NotFound("Không tìm thấy sản phẩm trong giỏ hàng.");
+                }
+                cartProductInDb.Quantity = cartProduct.Quantity;
+                _context.SaveChanges();
+                return Ok("Cập nhật số lượng sản phẩm trong giỏ hàng thành công.");
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex);
+            }
         }
 
     }

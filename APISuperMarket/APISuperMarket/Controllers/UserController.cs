@@ -103,6 +103,13 @@ namespace APISuperMarket.Controllers
                 {
                     return BadRequest("Hình ảnh đã tồn tại.");
                 }
+                ProfileImage linkimage = _context.ProfileImages.FirstOrDefault(p => p.ProfileImageId == customer.ProfileImageId);
+                var fileid = _googleDriveService.GetFileId(linkimage.ImageUrl);
+                bool check = _googleDriveService.DeleteFileAsync(fileid);
+                if (!check)
+                {
+                    return NotFound("Xóa ảnh không thành công");
+                }
                 // Lưu file tạm thời lên server để upload lên Google Drive
                 var tempFilePath = Path.GetTempFileName();
                 using (var stream = new FileStream(tempFilePath, FileMode.Create))
@@ -119,6 +126,7 @@ namespace APISuperMarket.Controllers
                 {
                     ImageUrl = link
                 };
+
                 _context.ProfileImages.Add(newProfileImage);
                 _context.SaveChanges();
                 customer.ProfileImageId = newProfileImage.ProfileImageId;
