@@ -121,7 +121,7 @@ namespace APISuperMarket.Controllers
                     HashPass = registerRequest.Password,
                     AuthProvider = null,
                     DateCreation = DateTime.UtcNow,
-                    StatusAccId = 7
+                    StatusAccId = 1
                 };
                 _context.AccCustomers.Add(newAccUser);
                 await _context.SaveChangesAsync();

@@ -3,7 +3,7 @@
     "mssql1": {
       "serviceConnectorResourceId": "",
       "secretStore": "LocalSecretsFile",
-      "type": "mssql.local",
+      "type": "mssql.onprem",
       "connectionId": "ConnectionStrings:MarketDB",
       "dynamicId": null
     }

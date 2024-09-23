@@ -5,6 +5,6 @@
         public string? CustomerName { get; set; }
         public DateTime BirthDay { get; set; }
         public string? GenderName { get; set; }
-        public string? ProfileImage { get; set; }
+        public IFormFile? ProfileImage { get; set; }
     }
 }

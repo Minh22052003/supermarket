@@ -12,6 +12,7 @@
           "Google.Apis.Drive.v3": "1.68.0.3508",
           "Microsoft.AspNetCore.Authentication.JwtBearer": "6.0.33",
           "Microsoft.EntityFrameworkCore": "6.0.32",
+          "Microsoft.EntityFrameworkCore.Design": "6.0.32",
           "Microsoft.EntityFrameworkCore.SqlServer": "6.0.32",
           "Microsoft.EntityFrameworkCore.Tools": "6.0.32",
           "Swashbuckle.AspNetCore": "6.5.0"

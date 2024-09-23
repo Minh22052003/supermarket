@@ -269,9 +269,24 @@
     "Order": 0,
     "Parameters": [
       {
-        "Name": "profileUserDTO",
-        "Type": "APISuperMarket.DTOs.ProfileUserDTO",
-        "IsRequired": true
+        "Name": "CustomerName",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "BirthDay",
+        "Type": "System.DateTime",
+        "IsRequired": false
+      },
+      {
+        "Name": "GenderName",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "ProfileImage",
+        "Type": "Microsoft.AspNetCore.Http.IFormFile",
+        "IsRequired": false
       }
     ],
     "ReturnTypes": []

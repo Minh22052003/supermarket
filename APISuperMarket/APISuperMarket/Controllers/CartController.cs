@@ -17,7 +17,7 @@ namespace APISuperMarket.Controllers
         {
             _context = context;
         }
-        [Authorize(Roles = "User")]
+        [Authorize(Roles = "Customer")]
         [HttpGet("getcart")]
         public IActionResult GetCart()
         {
@@ -42,7 +42,7 @@ namespace APISuperMarket.Controllers
 
         }
 
-        [Authorize(Roles = "User")]
+        [Authorize(Roles = "Customer")]
         [HttpPost("addtocart")]
         public IActionResult AddToCart([FromBody] CartProductDTO cartProduct)
         {
@@ -97,7 +97,7 @@ namespace APISuperMarket.Controllers
             
         }
 
-        [Authorize(Roles= "User")]
+        [Authorize(Roles= "Customer")]
         [HttpDelete("deletecartproduct/{productId}")]
         public IActionResult DeleteCartProduct(int productId)
         {
@@ -131,7 +131,7 @@ namespace APISuperMarket.Controllers
 
         }
 
-        [Authorize(Roles="User")]
+        [Authorize(Roles="Customer")]
         [HttpPut("updatecartproduct")]
         public IActionResult UpdateCart([FromBody] CartProductDTO cartProduct)
         {
