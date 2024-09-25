@@ -102,18 +102,26 @@ namespace APISuperMarket.Controllers
                         return NotFound("Gmail đã tồn tại trong hệ thống");
                     }
                 }
+
+
                 var newMail = new Mail
                 {
                     EmailAddress = registerRequest.Gmail
                 };
                 _context.Mail.Add(newMail);
                 await _context.SaveChangesAsync();
+
+
+
                 var newUser = new Customer
                 {
                     MailId = newMail.MailId,
                 };
                 _context.Customers.Add(newUser);
                 await _context.SaveChangesAsync();
+
+
+
                 var newAccUser = new AccCustomer
                 {
                     CustomerId = newUser.CustomerId, 
@@ -125,6 +133,15 @@ namespace APISuperMarket.Controllers
                 };
                 _context.AccCustomers.Add(newAccUser);
                 await _context.SaveChangesAsync();
+
+                var cart = new Cart
+                {
+                    CustomerId = newUser.CustomerId
+                };
+                _context.Carts.Add(cart);
+                await _context.SaveChangesAsync();
+
+
                 var customerRole = new CustomerRole
                 {
                     CustomerId = newUser.CustomerId,

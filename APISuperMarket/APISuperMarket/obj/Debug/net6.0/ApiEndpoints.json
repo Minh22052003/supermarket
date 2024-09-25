@@ -111,8 +111,8 @@
   },
   {
     "ContainingType": "APISuperMarket.Controllers.CartController",
-    "Method": "AddToCart",
-    "RelativePath": "api/Cart/addtocart",
+    "Method": "EditCart",
+    "RelativePath": "api/Cart/editcart",
     "HttpMethod": "POST",
     "IsController": true,
     "Order": 0,
@@ -127,44 +127,12 @@
   },
   {
     "ContainingType": "APISuperMarket.Controllers.CartController",
-    "Method": "DeleteCartProduct",
-    "RelativePath": "api/Cart/deletecartproduct/{productId}",
-    "HttpMethod": "DELETE",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "productId",
-        "Type": "System.Int32",
-        "IsRequired": true
-      }
-    ],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "APISuperMarket.Controllers.CartController",
     "Method": "GetCart",
     "RelativePath": "api/Cart/getcart",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
     "Parameters": [],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "APISuperMarket.Controllers.CartController",
-    "Method": "UpdateCart",
-    "RelativePath": "api/Cart/updatecartproduct",
-    "HttpMethod": "PUT",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "cartProduct",
-        "Type": "APISuperMarket.DTOs.CartProductDTO",
-        "IsRequired": true
-      }
-    ],
     "ReturnTypes": []
   },
   {
