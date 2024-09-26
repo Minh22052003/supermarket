@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace APISuperMarket.Migrations
 {
-    [DbContext(typeof(DataSuperMartContext))]
+    [DbContext(typeof(DataSuperMarketContext))]
     partial class DataSuperMartContextModelSnapshot : ModelSnapshot
     {
         protected override void BuildModel(ModelBuilder modelBuilder)

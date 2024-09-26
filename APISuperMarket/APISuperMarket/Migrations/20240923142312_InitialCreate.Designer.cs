@@ -11,7 +11,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace APISuperMarket.Migrations
 {
-    [DbContext(typeof(DataSuperMartContext))]
+    [DbContext(typeof(DataSuperMarketContext))]
     [Migration("20240923142312_InitialCreate")]
     partial class InitialCreate
     {

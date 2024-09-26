@@ -16,7 +16,7 @@ builder.Services.AddScoped<GoogleDriveService>();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
-builder.Services.AddDbContext<DataSuperMartContext>(option => option.UseSqlServer(builder.Configuration.GetConnectionString("MarketDB")));
+builder.Services.AddDbContext<DataSuperMarketContext>(option => option.UseSqlServer(builder.Configuration.GetConnectionString("MarketDB")));
 
 
 // Dang ki dich vu RoleService
@@ -96,9 +96,9 @@ app.Run();
 
 public class RoleService
 {
-    private readonly DataSuperMartContext _context;
+    private readonly DataSuperMarketContext _context;
 
-    public RoleService(DataSuperMartContext context)
+    public RoleService(DataSuperMarketContext context)
     {
         _context = context;
     }

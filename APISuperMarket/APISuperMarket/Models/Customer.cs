@@ -8,6 +8,7 @@ namespace APISuperMarket.Models
         public Customer()
         {
             AccCustomers = new HashSet<AccCustomer>();
+            Addresses = new HashSet<Address>();
             BankAccounts = new HashSet<BankAccount>();
             BrandChanges = new HashSet<BrandChange>();
             Carts = new HashSet<Cart>();
@@ -33,6 +34,7 @@ namespace APISuperMarket.Models
         public virtual Mail? Mail { get; set; }
         public virtual ProfileImage? ProfileImage { get; set; }
         public virtual ICollection<AccCustomer> AccCustomers { get; set; }
+        public virtual ICollection<Address> Addresses { get; set; }
         public virtual ICollection<BankAccount> BankAccounts { get; set; }
         public virtual ICollection<BrandChange> BrandChanges { get; set; }
         public virtual ICollection<Cart> Carts { get; set; }

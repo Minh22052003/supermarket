@@ -12,8 +12,8 @@ namespace APISuperMarket.Controllers
     [ApiController]
     public class CartController : ControllerBase
     {
-        private readonly DataSuperMartContext _context;
-        public CartController(DataSuperMartContext context)
+        private readonly DataSuperMarketContext _context;
+        public CartController(DataSuperMarketContext context)
         {
             _context = context;
         }

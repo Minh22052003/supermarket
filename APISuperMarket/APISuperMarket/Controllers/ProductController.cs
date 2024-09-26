@@ -11,10 +11,10 @@ namespace APISuperMarket.Controllers
     [ApiController]
     public class ProductController : ControllerBase
     {
-        private readonly DataSuperMartContext _context;
+        private readonly DataSuperMarketContext _context;
         private readonly IConfiguration _configuration;
         private readonly GoogleDriveService _googleDriveService;
-        public ProductController(DataSuperMartContext context, GoogleDriveService googleDriveService, IConfiguration configuration)
+        public ProductController(DataSuperMarketContext context, GoogleDriveService googleDriveService, IConfiguration configuration)
         {
             _context = context;
             _googleDriveService = googleDriveService;

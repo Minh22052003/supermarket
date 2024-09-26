@@ -19,9 +19,9 @@ namespace APISuperMarket.Controllers
     public class AuthController : ControllerBase
     {
         private readonly IConfiguration _configuration;
-        private readonly DataSuperMartContext _context;
+        private readonly DataSuperMarketContext _context;
 
-        public AuthController(IConfiguration configuration, DataSuperMartContext context)
+        public AuthController(IConfiguration configuration, DataSuperMarketContext context)
         {
             _configuration = configuration;
             _context = context;

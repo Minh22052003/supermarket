@@ -136,6 +136,16 @@
     "ReturnTypes": []
   },
   {
+    "ContainingType": "APISuperMarket.Controllers.OrderController",
+    "Method": "GetAllOrders",
+    "RelativePath": "api/Order/getallorders",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "APISuperMarket.Controllers.ProductController",
     "Method": "AddProduct",
     "RelativePath": "api/Product/addproduct",

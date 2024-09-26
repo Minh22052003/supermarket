@@ -20,7 +20,9 @@ namespace APISuperMarket.Models
         public double? DiscountAmount { get; set; }
         public DateTime? OrderDate { get; set; }
         public DateTime? UpdateTime { get; set; }
+        public int? AddressId { get; set; }
 
+        public virtual Address? Address { get; set; }
         public virtual Customer? Customer { get; set; }
         public virtual DiscountCode? DiscountCode { get; set; }
         public virtual OrderStatus? OrderStatus { get; set; }

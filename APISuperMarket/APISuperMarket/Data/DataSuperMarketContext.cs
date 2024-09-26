@@ -6,18 +6,19 @@ using Microsoft.EntityFrameworkCore.Metadata;
 
 namespace APISuperMarket.Data
 {
-    public partial class DataSuperMartContext : DbContext
+    public partial class DataSuperMarketContext : DbContext
     {
-        public DataSuperMartContext()
+        public DataSuperMarketContext()
         {
         }
 
-        public DataSuperMartContext(DbContextOptions<DataSuperMartContext> options)
+        public DataSuperMarketContext(DbContextOptions<DataSuperMarketContext> options)
             : base(options)
         {
         }
 
         public virtual DbSet<AccCustomer> AccCustomers { get; set; } = null!;
+        public virtual DbSet<Address> Addresses { get; set; } = null!;
         public virtual DbSet<BankAccount> BankAccounts { get; set; } = null!;
         public virtual DbSet<BankTransfer> BankTransfers { get; set; } = null!;
         public virtual DbSet<Brand> Brands { get; set; } = null!;
@@ -56,7 +57,7 @@ namespace APISuperMarket.Data
             if (!optionsBuilder.IsConfigured)
             {
 #warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see http://go.microsoft.com/fwlink/?LinkId=723263.
-                optionsBuilder.UseSqlServer("Data Source=DESKTOP-SB1QUSQ\\SQLEXPRESS;Initial Catalog=DataSuperMart;Integrated Security=True;Multiple Active Result Sets=True;Trust Server Certificate=True");
+                optionsBuilder.UseSqlServer("Data Source=DESKTOP-CNFI749\\SQLEXPRESS;Initial Catalog=DataSuperMarket;Integrated Security=True;Multiple Active Result Sets=True;Trust Server Certificate=True");
             }
         }
 
@@ -65,6 +66,10 @@ namespace APISuperMarket.Data
             modelBuilder.Entity<AccCustomer>(entity =>
             {
                 entity.ToTable("Acc_Customer");
+
+                entity.HasIndex(e => e.CustomerId, "IX_Acc_Customer_CustomerID");
+
+                entity.HasIndex(e => e.StatusAccId, "IX_Acc_Customer_Status_AccID");
 
                 entity.Property(e => e.AccCustomerId).HasColumnName("Acc_CustomerID");
 
@@ -108,9 +113,43 @@ namespace APISuperMarket.Data
                     .HasConstraintName("FK__Acc_Custo__Statu__498EEC8D");
             });
 
+            modelBuilder.Entity<Address>(entity =>
+            {
+                entity.ToTable("Address");
+
+                entity.Property(e => e.AddressId).HasColumnName("AddressID");
+
+                entity.Property(e => e.AddressLine1).HasMaxLength(255);
+
+                entity.Property(e => e.City).HasMaxLength(100);
+
+                entity.Property(e => e.Commune).HasMaxLength(100);
+
+                entity.Property(e => e.Country).HasMaxLength(100);
+
+                entity.Property(e => e.CreatedAt)
+                    .HasColumnType("datetime")
+                    .HasDefaultValueSql("(getdate())");
+
+                entity.Property(e => e.CustomerId).HasColumnName("CustomerID");
+
+                entity.Property(e => e.District).HasMaxLength(100);
+
+                entity.Property(e => e.FullName).HasMaxLength(255);
+
+                entity.Property(e => e.PhoneNumber).HasMaxLength(15);
+
+                entity.HasOne(d => d.Customer)
+                    .WithMany(p => p.Addresses)
+                    .HasForeignKey(d => d.CustomerId)
+                    .HasConstraintName("FK_Customer_Address");
+            });
+
             modelBuilder.Entity<BankAccount>(entity =>
             {
                 entity.ToTable("Bank_Account");
+
+                entity.HasIndex(e => e.CustomerId, "IX_Bank_Account_CustomerID");
 
                 entity.Property(e => e.BankAccountId).HasColumnName("Bank_AccountID");
 
@@ -141,6 +180,8 @@ namespace APISuperMarket.Data
             modelBuilder.Entity<BankTransfer>(entity =>
             {
                 entity.ToTable("Bank_Transfers");
+
+                entity.HasIndex(e => e.OrderId, "IX_Bank_Transfers_OrderID");
 
                 entity.Property(e => e.BankTransferId).HasColumnName("Bank_TransferID");
 
@@ -208,6 +249,12 @@ namespace APISuperMarket.Data
             {
                 entity.ToTable("Brand_Changes");
 
+                entity.HasIndex(e => e.BrandId, "IX_Brand_Changes_BrandID");
+
+                entity.HasIndex(e => e.ChangeTypeId, "IX_Brand_Changes_Change_TypeID");
+
+                entity.HasIndex(e => e.CustomerId, "IX_Brand_Changes_CustomerID");
+
                 entity.Property(e => e.BrandChangeId).HasColumnName("Brand_ChangeID");
 
                 entity.Property(e => e.BrandId).HasColumnName("BrandID");
@@ -246,6 +293,8 @@ namespace APISuperMarket.Data
             {
                 entity.ToTable("Cart");
 
+                entity.HasIndex(e => e.CustomerId, "IX_Cart_CustomerID");
+
                 entity.Property(e => e.CartId).HasColumnName("CartID");
 
                 entity.Property(e => e.CustomerId).HasColumnName("CustomerID");
@@ -262,6 +311,10 @@ namespace APISuperMarket.Data
                     .HasName("PK__Cart_Pro__A080AFB0CFC975CE");
 
                 entity.ToTable("Cart_Products");
+
+                entity.HasIndex(e => e.CartId, "IX_Cart_Products_CartID");
+
+                entity.HasIndex(e => e.ProductId, "IX_Cart_Products_ProductID");
 
                 entity.Property(e => e.CartProductsId).HasColumnName("Cart_ProductsID");
 
@@ -305,6 +358,12 @@ namespace APISuperMarket.Data
             {
                 entity.ToTable("Customer");
 
+                entity.HasIndex(e => e.GenderId, "IX_Customer_GenderID");
+
+                entity.HasIndex(e => e.MailId, "IX_Customer_MailID");
+
+                entity.HasIndex(e => e.ProfileImageId, "IX_Customer_Profile_ImageID");
+
                 entity.Property(e => e.CustomerId).HasColumnName("CustomerID");
 
                 entity.Property(e => e.BirthDay).HasColumnType("datetime");
@@ -337,6 +396,10 @@ namespace APISuperMarket.Data
             {
                 entity.ToTable("Customer_Roles");
 
+                entity.HasIndex(e => e.CustomerId, "IX_Customer_Roles_CustomerID");
+
+                entity.HasIndex(e => e.RoleId, "IX_Customer_Roles_RoleID");
+
                 entity.Property(e => e.CustomerRoleId).HasColumnName("Customer_RoleID");
 
                 entity.Property(e => e.CustomerId).HasColumnName("CustomerID");
@@ -357,6 +420,12 @@ namespace APISuperMarket.Data
             modelBuilder.Entity<DiscountChange>(entity =>
             {
                 entity.ToTable("Discount_Changes");
+
+                entity.HasIndex(e => e.ChangeTypeId, "IX_Discount_Changes_Change_TypeID");
+
+                entity.HasIndex(e => e.CustomerId, "IX_Discount_Changes_CustomerID");
+
+                entity.HasIndex(e => e.DiscountCodeId, "IX_Discount_Changes_Discount_CodeID");
 
                 entity.Property(e => e.DiscountChangeId).HasColumnName("Discount_ChangeID");
 
@@ -451,7 +520,15 @@ namespace APISuperMarket.Data
 
             modelBuilder.Entity<Order>(entity =>
             {
+                entity.HasIndex(e => e.CustomerId, "IX_Orders_CustomerID");
+
+                entity.HasIndex(e => e.DiscountCodeId, "IX_Orders_Discount_CodeID");
+
+                entity.HasIndex(e => e.OrderStatusId, "IX_Orders_Order_StatusID");
+
                 entity.Property(e => e.OrderId).HasColumnName("OrderID");
+
+                entity.Property(e => e.AddressId).HasColumnName("AddressID");
 
                 entity.Property(e => e.CustomerId).HasColumnName("CustomerID");
 
@@ -473,6 +550,11 @@ namespace APISuperMarket.Data
                     .HasColumnName("Update_Time")
                     .HasDefaultValueSql("(getdate())");
 
+                entity.HasOne(d => d.Address)
+                    .WithMany(p => p.Orders)
+                    .HasForeignKey(d => d.AddressId)
+                    .HasConstraintName("FK_Order_Address");
+
                 entity.HasOne(d => d.Customer)
                     .WithMany(p => p.Orders)
                     .HasForeignKey(d => d.CustomerId)
@@ -492,6 +574,12 @@ namespace APISuperMarket.Data
             modelBuilder.Entity<OrderChange>(entity =>
             {
                 entity.ToTable("Order_Changes");
+
+                entity.HasIndex(e => e.ChangeTypeId, "IX_Order_Changes_Change_TypeID");
+
+                entity.HasIndex(e => e.CustomerId, "IX_Order_Changes_CustomerID");
+
+                entity.HasIndex(e => e.OrderId, "IX_Order_Changes_OrderID");
 
                 entity.Property(e => e.OrderChangeId).HasColumnName("Order_ChangeID");
 
@@ -527,6 +615,10 @@ namespace APISuperMarket.Data
             modelBuilder.Entity<OrderDetail>(entity =>
             {
                 entity.ToTable("Order_Details");
+
+                entity.HasIndex(e => e.OrderId, "IX_Order_Details_OrderID");
+
+                entity.HasIndex(e => e.ProductId, "IX_Order_Details_ProductID");
 
                 entity.Property(e => e.OrderDetailId).HasColumnName("Order_DetailID");
 
@@ -581,6 +673,8 @@ namespace APISuperMarket.Data
             {
                 entity.ToTable("Product");
 
+                entity.HasIndex(e => e.BrandId, "IX_Product_BrandID");
+
                 entity.Property(e => e.ProductId).HasColumnName("ProductID");
 
                 entity.Property(e => e.BrandId).HasColumnName("BrandID");
@@ -605,6 +699,10 @@ namespace APISuperMarket.Data
             {
                 entity.ToTable("Product_Category");
 
+                entity.HasIndex(e => e.CategoryId, "IX_Product_Category_CategoryID");
+
+                entity.HasIndex(e => e.ProductId, "IX_Product_Category_ProductID");
+
                 entity.Property(e => e.ProductCategoryId).HasColumnName("Product_CategoryID");
 
                 entity.Property(e => e.CategoryId).HasColumnName("CategoryID");
@@ -625,6 +723,12 @@ namespace APISuperMarket.Data
             modelBuilder.Entity<ProductChange>(entity =>
             {
                 entity.ToTable("Product_Changes");
+
+                entity.HasIndex(e => e.ChangeTypeId, "IX_Product_Changes_Change_TypeID");
+
+                entity.HasIndex(e => e.CustomerId, "IX_Product_Changes_CustomerID");
+
+                entity.HasIndex(e => e.ProductId, "IX_Product_Changes_ProductID");
 
                 entity.Property(e => e.ProductChangeId).HasColumnName("Product_ChangeID");
 
@@ -664,6 +768,8 @@ namespace APISuperMarket.Data
 
                 entity.ToTable("Product_Images");
 
+                entity.HasIndex(e => e.ProductId, "IX_Product_Images_ProductID");
+
                 entity.Property(e => e.ProductImagesId).HasColumnName("Product_ImagesID");
 
                 entity.Property(e => e.ImageUrl)
@@ -685,6 +791,10 @@ namespace APISuperMarket.Data
                     .HasName("PK__Product___F25AB493DEBFBDEE");
 
                 entity.ToTable("Product_Reviews");
+
+                entity.HasIndex(e => e.CustomerId, "IX_Product_Reviews_CustomerID");
+
+                entity.HasIndex(e => e.ProductId, "IX_Product_Reviews_ProductID");
 
                 entity.Property(e => e.ProductReviewsId).HasColumnName("Product_ReviewsID");
 
@@ -732,6 +842,8 @@ namespace APISuperMarket.Data
 
                 entity.ToTable("Review_Images");
 
+                entity.HasIndex(e => e.ProductReviewsId, "IX_Review_Images_Product_ReviewsID");
+
                 entity.Property(e => e.ReviewImages).HasColumnName("Review_Images");
 
                 entity.Property(e => e.ImageUrl)
@@ -761,6 +873,10 @@ namespace APISuperMarket.Data
                 entity.HasNoKey();
 
                 entity.ToTable("Role_Permissions");
+
+                entity.HasIndex(e => e.PermissionId, "IX_Role_Permissions_PermissionID");
+
+                entity.HasIndex(e => e.RoleId, "IX_Role_Permissions_RoleID");
 
                 entity.Property(e => e.PermissionId).HasColumnName("PermissionID");
 
@@ -813,6 +929,12 @@ namespace APISuperMarket.Data
             {
                 entity.ToTable("UI_Changes");
 
+                entity.HasIndex(e => e.ChangeTypeId, "IX_UI_Changes_Change_TypeID");
+
+                entity.HasIndex(e => e.CustomerId, "IX_UI_Changes_CustomerID");
+
+                entity.HasIndex(e => e.StoreInfoId, "IX_UI_Changes_Store_InfoID");
+
                 entity.Property(e => e.UiChangeId).HasColumnName("UI_ChangeID");
 
                 entity.Property(e => e.ChangeDate)
@@ -847,6 +969,12 @@ namespace APISuperMarket.Data
             modelBuilder.Entity<UserChange>(entity =>
             {
                 entity.ToTable("User_Changes");
+
+                entity.HasIndex(e => e.AdminId, "IX_User_Changes_AdminID");
+
+                entity.HasIndex(e => e.ChangeTypeId, "IX_User_Changes_Change_TypeID");
+
+                entity.HasIndex(e => e.CustomerId, "IX_User_Changes_CustomerID");
 
                 entity.Property(e => e.UserChangeId).HasColumnName("User_ChangeID");
 
